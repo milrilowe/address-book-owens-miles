@@ -1,0 +1,9 @@
+user_full_fields:
+  email_address: 'email_address'
+  password: 'password'
+
+user_missing_email_address:
+  password: 'password'
+
+user_missing_password:
+  email_address: 'email_address'

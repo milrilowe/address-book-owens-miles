@@ -1,0 +1,6 @@
+phone_number_full_fields:
+  phone_number: 'phone_number'
+  comment: 'comment'
+
+phone_number_missing_phone_number:
+  comment: 'comment'

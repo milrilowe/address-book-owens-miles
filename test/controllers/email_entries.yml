@@ -1,0 +1,6 @@
+email_full_fields:
+  email_address: 'email_address'
+  comment: 'comment'
+
+email_missing_email_address:
+  comment: 'comment'

@@ -1,0 +1,24 @@
+person_full_fields:
+  salutation: 'Mr.'
+  first_name: 'First'
+  middle_name: 'Middle'
+  last_name: 'Last'
+  ssn: 'SSN'
+  birth_date: 'Pete'
+  comment: 'comment'
+
+person_missing_first:
+  salutation: 'Mr.'
+  middle_name: 'Middle'
+  last_name: 'Last'
+  ssn: 'SSN'
+  birth_date: 'Pete'
+  comment: 'comment'
+
+person_missing_last:
+  salutation: 'Mr.'
+  first_name: 'First'
+  middle_name: 'Middle'
+  ssn: 'SSN'
+  birth_date: 'Pete'
+  comment: 'comment'
