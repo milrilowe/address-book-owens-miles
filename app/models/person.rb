@@ -1,4 +1,7 @@
 class Person < ApplicationRecord
+  has_many :addresses, dependent: :destroy
+  has_many :emails, dependent: :destroy
+  has_many :phone_numbers, dependent: :destroy
 
   validates :salutation, presence: true, inclusion: {
     in: %w(Mr. Mrs. Ms.),
@@ -15,4 +18,12 @@ class Person < ApplicationRecord
     with: /\A^$|^(?!000|666)[0-8][0-9]{2}-(?!00)[0-9]{2}-(?!000)[0-9]{4}$\z/,
     message: "must follow XXX-XX-XXXX format and be a valid SSN"
   }
+
+  def full_name
+    "#{salutation} #{first_name} #{middle_name} #{last_name}"
+  end
+
+  def informal_name
+    "#{first_name} #{last_name}"
+  end
 end
