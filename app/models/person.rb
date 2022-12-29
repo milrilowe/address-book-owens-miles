@@ -10,9 +10,9 @@ class Person < ApplicationRecord
   validates :last_name, presence: true
 
 
-  # www.geeksforgeeks.org/how-to-validate-ssn-social-security-number-using-regular-expression
+  # https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s12.html
   validates :ssn, format: {
-    with: /\A(^(?!666|000|9\\d{2})\\d{3}-(?!00)\\d{2}-(?!0{4})\\d{4}$)\z/,
-    message: "%{value}"
+    with: /\A^(?!000|666)[0-8][0-9]{2}-(?!00)[0-9]{2}-(?!000)[0-9]{4}$\z/,
+    message: "must follow XXX-XX-XXXX format"
   }
 end
