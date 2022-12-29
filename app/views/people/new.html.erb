@@ -1,0 +1,63 @@
+<h1>New Person</h1>
+
+<%= form_with model: @person do |form| %>
+  <div>
+    <%= form.label :salutation %><br>
+    <%= form.text_field :salutation %>
+    <% @person.errors.full_messages_for(:salutation).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :first_name %><br>
+    <%= form.text_field :first_name %>
+    <% @person.errors.full_messages_for(:first_name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :middle_name %><br>
+    <%= form.text_field :middle_name %>
+    <% @person.errors.full_messages_for(:middle_name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :last_name %><br>
+    <%= form.text_field :last_name %>
+    <% @person.errors.full_messages_for(:last_name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :ssn %><br>
+    <%= form.text_field :ssn %>
+    <% @person.errors.full_messages_for(:ssn).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :birth_date %><br>
+    <%= form.text_field :birth_date %>
+    <% @person.errors.full_messages_for(:birth_date).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :comment %><br>
+    <%= form.text_field :comment %>
+    <% @person.errors.full_messages_for(:comment).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
