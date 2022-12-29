@@ -3,7 +3,7 @@
 <ul>
   <% @people.each do |person| %>
     <li>
-      <%= link_to person.title, person  %>
+      <%= link_to "#{person.last_name}, #{person.first_name}", person %>
     </li>
   <% end %>
 </ul>
