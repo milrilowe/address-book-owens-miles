@@ -1,6 +1,18 @@
-<h1><%= @person.first_name %> <%= @person.last_name %></h1>
+<h1><%= @person.full_name %></h1>
 
 <p><%= @person.birth_date %></p>
 <p><%= @person.comment %></p>
 
+<% @person.addresses.each do |address| %>
+  <p><%= address.street %></p>
+  <p><%= address.town %></p>
+  <p><%= address.state %></p>
+  <p><%= address.zip %></p>
+<% end %>
+
+<%= link_to 'Add Address', new_person_address_path(@person) %>
+<%= link_to 'Add Email', new_person_email_path(@person) %>
+<%= link_to 'Add Phone Number', new_person_phone_number_path(@person) %>
+
+<%= link_to 'Edit', edit_person_path(@person) %>
 <%= link_to "Back", people_path %>
