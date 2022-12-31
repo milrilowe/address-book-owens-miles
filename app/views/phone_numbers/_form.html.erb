@@ -1,0 +1,11 @@
+<%= form_with model: [@person, @phone_number] do |form| %>
+  <div>
+    <%= form.label :phone_number %><br>
+    <%= form.text_field :phone_number %>
+    <% @person.errors.full_messages_for(:phone_number).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <%= form.submit %>
+<% end %>
