@@ -1,6 +1,6 @@
 class AddressesController < ApplicationController
   before_action :set_address, only: [:show, :edit, :update, :destroy]
-  before_action :set_person, only: [:show, :new, :create]
+  before_action :set_person, only: [:show, :new, :create, :edit]
   def index
     @addresses = Address.all
   end
