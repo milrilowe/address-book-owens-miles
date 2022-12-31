@@ -1,4 +1,0 @@
-<% @person.phone_numbers.each do |phone_number| %>
-  <p>Phone Number: <%= phone_number.phone_number %></p>
-  <%= link_to 'Edit Phone Number', edit_person_phone_number_path(@person, phone_number) %>
-<% end %>

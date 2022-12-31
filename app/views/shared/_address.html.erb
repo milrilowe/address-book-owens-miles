@@ -1,8 +1,0 @@
-<% @person.addresses.each do |address| %>
-  <p>Street: <%= address.street %></p>
-  <p>Town: <%= address.town %></p>
-  <p>State: <%= address.state %></p>
-  <p>Zip Code: <%= address.zip_code %></p>
-  <p>Country: <%= address.country.to_s %></p>
-  <%= link_to 'Edit Address', edit_person_address_path(@person, address) %>
-<% end %>
