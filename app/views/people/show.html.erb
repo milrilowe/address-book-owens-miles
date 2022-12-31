@@ -3,17 +3,40 @@
 <p><%= @person.birth_date %></p>
 <p><%= @person.comment %></p>
 
-<% #Display each address %>
-<h1>Addresses</h1>
-<%= render 'shared/address', person: @person %>
+<h1 class="navbar-brand">
+  <%= link_to "Addresses", "#", id: "addresses-link" %>
+</h1>
+
+<section id="addresses-section">
+  <ol id="addresses">
+    <%= render @addresses %>
+  </ol>
+</section>
 
 <% #Display each email %>
-<h1>Emails</h1>
-<%= render 'shared/email', person: @person %>
+<h1>
+  <%= link_to "Emails", "#", id: "emails-link" %>
+</h1>
+
+<section id="emails-section">
+  <% if @person.emails.length == 0  %>
+    <p>No emails</p>
+  <% end %>
+  <ol id="emails">
+    <%= render @emails %>
+  </ol>
+</section>
 
 <% #Display each phone number %>
-<h1>Phone Numbers</h1>
-<%= render 'shared/phone_number', person: @person %>
+<h1>
+  <%= link_to "Phone Numbers", "#", id: "phone-numbers-link" %>
+</h1>
+
+<section id="phone-numbers-section">
+  <ol id="phone-numbers">
+    <%= render @phone_numbers %>
+  </ol>
+</section>
 
 <br/>
 <br/>
