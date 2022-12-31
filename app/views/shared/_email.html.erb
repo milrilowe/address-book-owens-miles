@@ -1,0 +1,4 @@
+<% @person.emails.each do |email| %>
+  <p>Email: <%= email.email_address %></p>
+  <%= link_to 'Edit Email', edit_person_email_path(@person, email) %>
+<% end %>
