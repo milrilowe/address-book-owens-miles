@@ -13,6 +13,9 @@ require("@popperjs/core")
 require('jquery')
 require("../stylesheets/application.scss")
 
+// Custom JS
+require('packs/fadeToggle')
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
