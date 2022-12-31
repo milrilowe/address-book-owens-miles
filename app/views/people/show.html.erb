@@ -3,12 +3,20 @@
 <p><%= @person.birth_date %></p>
 <p><%= @person.comment %></p>
 
-<% @person.addresses.each do |address| %>
-  <p><%= address.street %></p>
-  <p><%= address.town %></p>
-  <p><%= address.state %></p>
-  <p><%= address.zip %></p>
-<% end %>
+<% #Display each address %>
+<h1>Addresses</h1>
+<%= render 'shared/address', person: @person %>
+
+<% #Display each email %>
+<h1>Emails</h1>
+<%= render 'shared/email', person: @person %>
+
+<% #Display each phone number %>
+<h1>Phone Numbers</h1>
+<%= render 'shared/phone_number', person: @person %>
+
+<br/>
+<br/>
 
 <%= link_to 'Add Address', new_person_address_path(@person) %>
 <%= link_to 'Add Email', new_person_email_path(@person) %>
