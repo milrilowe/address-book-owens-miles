@@ -21,11 +21,13 @@ class PeopleController < ApplicationController
 
   def edit
     @person = Person.find(params[:id])
-
   end
 
   def show
     @person = Person.find(params[:id])
+    @addresses = @person.addresses
+    @emails = @person.emails
+    @phone_numbers = @person.phone_numbers
   end
 
   def update
