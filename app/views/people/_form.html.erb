@@ -1,7 +1,7 @@
 <%= form_with model: @person do |form| %>
   <div>
     <%= form.label :salutation %><br>
-    <%= form.select :salutation, ["Mr.", "Mrs.", "Ms."] %>
+    <%= form.select :salutation, ["", "Mr.", "Mrs.", "Ms."] %>
     <% @person.errors.full_messages_for(:salutation).each do |message| %>
       <div><%= message %></div>
     <% end %>
@@ -58,4 +58,9 @@
   <div>
     <%= form.submit %>
   </div>
+
+  <% if !@person.new_record? %>
+    <%= link_to "Delete", person_path(@person), data: { method: :delete, confirm: "Are you sure?" } %>
+  <% end %>
 <% end %>
+
