@@ -1,6 +1,7 @@
 class AddressesController < ApplicationController
   before_action :set_address, only: [:show, :edit, :update, :destroy]
-  before_action :set_person, only: [:show, :new, :create, :edit]
+  before_action :set_person, only: [:index, :show, :new, :create, :edit]
+
   def index
     @addresses = Address.all
   end
@@ -14,7 +15,7 @@ class AddressesController < ApplicationController
   end
 
   def create
-    @address = Address.new(address_params)
+    @address = @person.addresses.new(address_params)
 
     if @address.save
       redirect_to person_path(@person)
