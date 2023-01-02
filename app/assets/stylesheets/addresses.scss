@@ -1,3 +1,27 @@
 #addresses-section {
   display: none;
 }
+
+.edit-address {
+  display: flex;
+  justify-content: flex-end;
+}
+
+ol#addresses {
+  padding: 0;
+}
+
+#address-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#address-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 13%;
+  margin-right: 13%;
+  max-width: 4.5in;
+}
