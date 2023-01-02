@@ -3,7 +3,7 @@
 <ul>
   <% @person.addresses.each do |address| %>
     <li>
-      <%= link_to address.street, person_address_path(address) %>
+      <%= link_to address.street, person_address_path(@person, address) %>
     </li>
   <% end %>
 </ul>
