@@ -1,3 +1,17 @@
 <li>
-  <p>Email: <%= email.email_address %></p>
+  <div class="card">
+    <div class="card-body">
+      <div class="edit-email">
+        <%= link_to "Edit", edit_person_email_path(@person, email) %>
+      </div>
+      <p><%= email.email_address %></p>
+      <p>Comment:
+        <% if email.comment.strip.length > 0 %>
+          <%= email.comment %>
+        <% else %>
+          N/A
+        <% end %>
+      </p>
+    </div>
+  </div>
 </li>
