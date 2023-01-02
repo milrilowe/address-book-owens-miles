@@ -1,5 +1,9 @@
 <br/>
 
+    <% if notice %>
+        <%= render 'shared/alerts' %>
+    <% end %>
+
     <%= render 'details' %>
 
     <%= render 'addresses' %>
@@ -8,7 +12,7 @@
 
     <%= render 'phone_numbers' %>
 
-
 <br/>
 
 <%= link_to "Back", people_path, class:"btn btn-secondary" %>
+
