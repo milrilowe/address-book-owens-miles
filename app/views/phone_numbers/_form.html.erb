@@ -2,7 +2,15 @@
   <div>
     <%= form.label :phone_number %><br>
     <%= form.text_field :phone_number %>
-    <% @person.errors.full_messages_for(:phone_number).each do |message| %>
+    <% @phone_number.errors.full_messages_for(:phone_number).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :comment %><br>
+    <%= form.text_field :comment %>
+    <% @phone_number.errors.full_messages_for(:comment).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
