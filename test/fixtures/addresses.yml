@@ -1,15 +1,16 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  street: MyString
-  town: MyString
-  zip_code: MyString
-  state: MyString
-  country: 1
+  street: 123 Fake St. Unit 1
+  town: Nowhere
+  zip_code: "55555"
+  state: AL
+  country: United States
+  person: full_person
 
-two:
-  street: MyString
-  town: MyString
-  zip_code: MyString
-  state: MyString
-  country: 1
+# two:
+#   street: MyString
+#   town: MyString
+#   zip_code: MyString
+#   state: MyString
+#   country: 1
