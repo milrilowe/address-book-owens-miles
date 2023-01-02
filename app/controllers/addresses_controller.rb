@@ -1,6 +1,6 @@
 class AddressesController < ApplicationController
+  before_action :set_person
   before_action :set_address, only: [:show, :edit, :update, :destroy]
-  before_action :set_person, only: [:index, :show, :new, :create, :edit]
 
   def index
     @addresses = Address.all
@@ -18,7 +18,7 @@ class AddressesController < ApplicationController
     @address = @person.addresses.new(address_params)
 
     if @address.save
-      redirect_to person_path(@person)
+      redirect_to person_path(@person), notice: "Address was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -29,10 +29,8 @@ class AddressesController < ApplicationController
   end
 
   def update
-    @address.update(address_params)
-
-    if @address.update
-      redirect_to @address
+    if @address.update(address_params)
+      redirect_to @person, notice: "Address was successfully updated."
     else
       render :new, status: :unprocessable_entity
     end
@@ -41,7 +39,7 @@ class AddressesController < ApplicationController
   def destroy
     @address.destroy
 
-    redirect_to addresses_path
+    redirect_to @person, notice: "Address was successfully destroyed.", status: :see_other
   end
 
   private
@@ -50,7 +48,7 @@ class AddressesController < ApplicationController
     end
 
     def set_address
-      @address = Address.find(params[:id])
+      @address = @person.addresses.find(params[:id])
     end
 
     def set_person
