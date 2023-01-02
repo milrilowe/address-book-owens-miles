@@ -1,0 +1,20 @@
+<section class="emails">
+  <div class="card">
+    <div class="card-header heading" id="emails-heading">
+      <h4>
+        Emails
+      </h4>
+    </div>
+    <section class="card-body" id="emails-section">
+      <% if @person.emails.length == 0  %>
+        <p>No emails</p>
+      <% end %>
+      <ol id="emails">
+        <%= render @emails %>
+      </ol>
+      <div class="button-right">
+        <%= link_to 'Add Email', new_person_email_path(@person), class:"btn btn-secondary" %>
+      </div>
+    </section>
+  </div>
+</section>
