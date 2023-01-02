@@ -2,7 +2,8 @@ class PeopleController < ApplicationController
   before_action :set_person, only: [:show, :edit, :update, :destroy]
 
   def index
-    @people = Person.all
+    # Return sorted by last name
+    @people = Person.all.order(:last_name)
   end
 
   def create
