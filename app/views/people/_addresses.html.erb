@@ -1,0 +1,66 @@
+<section class="addresses">
+  <div class="card">
+    <div class="card-header heading" id="addresses-heading">
+      <h4>
+        Addresses
+      </h4>
+    </div>
+    <section class="card-body" id="addresses-section" >
+      <% if @person.addresses.length == 0  %>
+        <p>No addresses</p>
+      <% end %>
+      <div id="carouselExample" class="carousel slide" data-touch="true">
+        <div class="carousel-indicators">
+          <% @person.addresses.each_with_index do |address, index| %>
+            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="<%= index %>" class="active" aria-current="true" aria-label="Slide <%= index + 1 %>"></button>
+          <% end %>
+        </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev" >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+            <div class="carousel-inner" >
+              <% @person.addresses.each_with_index do |address, index| %>
+                <div class="carousel-item <%= index == 0 ? 'active' : '' %>">
+                  <%= render address %>
+                </div>
+              <% end %>
+            </div>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      <div class="button-right">
+        <%= link_to 'Add Address', new_person_address_path(@person, @address), {class:"btn btn-secondary", 'data-toggle': "address-form-modal"} %>
+      </div>
+    </section>
+  </div>
+</section>
+
+<div class="modal fade" id="address-form-modal" tabindex="-1" aria-labelledby="address-form-modal-label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="address-form-modal-label">New message</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Recipient:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
+    </div>
+  </div>
+</div>
