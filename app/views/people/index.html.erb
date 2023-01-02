@@ -1,11 +1,35 @@
-<h1>People</h1>
+<br/>
+<%
+=begin%>
+ <nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+<%
+=end%>
+    <a class="navbar-brand">People</a>
+    <%
+=begin%>
+ <div class="d-flex">
+      <input class="form-control me-2" id="filter-people" type="text" placeholder="Search" aria-label="Search">
+    </div>
+  </div>
+</nav>
+<%
+=end%>
 
-<ul>
+<ol>
+  <% prevPerson = nil %>
   <% @people.each do |person| %>
+    <% if prevPerson == nil %>
+      <hr> <%= person.last_name.chr.upcase %> <hr>
+    <% end %>
+    <% if prevPerson && prevPerson.last_name.chr != person.last_name.chr %>
+      <hr> <%= person.last_name.chr.upcase %> <hr>
+    <% end %>
     <li>
-      <%= link_to "#{person.last_name}, #{person.first_name}", person %>
+      <%= render person %>
     </li>
+    <% prevPerson = person %>
   <% end %>
-</ul>
+</ol>
 
 <%= link_to "New Person", new_person_path %>
