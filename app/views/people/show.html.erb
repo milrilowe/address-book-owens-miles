@@ -1,49 +1,14 @@
-<h1><%= @person.full_name %></h1>
-
-<p><%= @person.birth_date %></p>
-<p><%= @person.comment %></p>
-
-<h1 class="navbar-brand">
-  <%= link_to "Addresses", "#", id: "addresses-link" %>
-</h1>
-
-<section id="addresses-section">
-  <ol id="addresses">
-    <%= render @addresses %>
-  </ol>
-</section>
-
-<% #Display each email %>
-<h1>
-  <%= link_to "Emails", "#", id: "emails-link" %>
-</h1>
-
-<section id="emails-section">
-  <% if @person.emails.length == 0  %>
-    <p>No emails</p>
-  <% end %>
-  <ol id="emails">
-    <%= render @emails %>
-  </ol>
-</section>
-
-<% #Display each phone number %>
-<h1>
-  <%= link_to "Phone Numbers", "#", id: "phone-numbers-link" %>
-</h1>
-
-<section id="phone-numbers-section">
-  <ol id="phone-numbers">
-    <%= render @phone_numbers %>
-  </ol>
-</section>
-
-<br/>
 <br/>
 
-<%= link_to 'Add Address', new_person_address_path(@person) %>
-<%= link_to 'Add Email', new_person_email_path(@person) %>
-<%= link_to 'Add Phone Number', new_person_phone_number_path(@person) %>
+    <%= render 'details' %>
 
-<%= link_to 'Edit', edit_person_path(@person) %>
-<%= link_to "Back", people_path %>
+    <%= render 'addresses' %>
+
+    <%= render 'emails' %>
+
+    <%= render 'phone_numbers' %>
+
+
+<br/>
+
+<%= link_to "Back", people_path, class:"btn btn-secondary" %>
