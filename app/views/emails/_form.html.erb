@@ -2,7 +2,15 @@
   <div>
     <%= form.label :email_address %><br>
     <%= form.text_field :email_address %>
-    <% @person.errors.full_messages_for(:email_address).each do |message| %>
+    <% @email.errors.full_messages_for(:email_address).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :comment %><br>
+    <%= form.text_field :comment %>
+    <% @email.errors.full_messages_for(:comment).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
