@@ -15,7 +15,9 @@
 </nav>
 <%
 =end%>
-
+    <% if notice %>
+        <%= render 'shared/alerts' %>
+    <% end %>
 <ol>
   <% prevPerson = nil %>
   <% @people.each do |person| %>
