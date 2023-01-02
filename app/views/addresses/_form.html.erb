@@ -2,7 +2,7 @@
   <div>
     <%= form.label :street %><br>
     <%= form.text_field :street %>
-    <% @person.errors.full_messages_for(:street).each do |message| %>
+    <% @address.errors.full_messages_for(:street).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
@@ -10,7 +10,7 @@
   <div>
     <%= form.label :town %><br>
     <%= form.text_field :town %>
-    <% @person.errors.full_messages_for(:town).each do |message| %>
+    <% @address.errors.full_messages_for(:town).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
@@ -18,7 +18,7 @@
   <div>
     <%= form.label :zip_code %><br>
     <%= form.text_field :zip_code %>
-    <% @person.errors.full_messages_for(:zip_code).each do |message| %>
+    <% @address.errors.full_messages_for(:zip_code).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
@@ -26,7 +26,7 @@
   <div>
     <%= form.label :state %><br>
     <%= form.text_field :state %>
-    <% @person.errors.full_messages_for(:state).each do |message| %>
+    <% @address.errors.full_messages_for(:state).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
@@ -34,6 +34,9 @@
   <div>
     <%= form.label :country %><br>
     <%= form.select :country, Country.all.map { |country| [ country.to_s, country.id ] } %>
+    <% @address.errors.full_messages_for(:country).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
   </div>
 
     <%= form.submit %>
