@@ -5,7 +5,7 @@
   <div class="container-fluid">
 <%
 =end%>
-    <a class="navbar-brand">People</a>
+    <h1 class="navbar-brand">People</h1>
     <%
 =begin%>
  <div class="d-flex">
@@ -22,7 +22,7 @@
     <% if prevPerson == nil %>
       <hr> <%= person.last_name.chr.upcase %> <hr>
     <% end %>
-    <% if prevPerson && prevPerson.last_name.chr != person.last_name.chr %>
+    <% if prevPerson && prevPerson.last_name.chr.upcase != person.last_name.chr.upcase %>
       <hr> <%= person.last_name.chr.upcase %> <hr>
     <% end %>
     <li>
