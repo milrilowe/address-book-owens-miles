@@ -1,3 +1,21 @@
 <li>
-  <p>Phone Number: <%= phone_number.phone_number %></p>
+
+</li>
+
+<li>
+  <div class="card">
+    <div class="card-body">
+      <div class="edit-phone-number">
+        <%= link_to "Edit", edit_person_phone_number_path(@person, phone_number) %>
+      </div>
+      <p><%= phone_number.phone_number %></p>
+      <p>Comment:
+          <% if phone_number.comment.strip.length > 0 %>
+            <%= phone_number.comment %>
+          <% else %>
+            N/A
+          <% end %>
+      </p>
+    </div>
+  </div>
 </li>
