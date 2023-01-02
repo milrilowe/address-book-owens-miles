@@ -3,14 +3,26 @@ class Person < ApplicationRecord
   has_many :emails, dependent: :destroy
   has_many :phone_numbers, dependent: :destroy
 
-  validates :salutation, presence: true, inclusion: {
-    in: %w(Mr. Mrs. Ms.),
+  validates :salutation, inclusion: {
+    in: [nil, '', 'Mr.', 'Mrs.', 'Ms.'], # I'd prefer to not have nil included
     message: "%{value} is not a valid salutation"
   }
 
   validates :first_name, presence: true
 
+  validates :first_name, format: { with: /\A^[a-zA-Z].*\z/, message: "must begin with a letter" }
+
+  validates :first_name, format: { with: /\A([a-zA-Z\-.]+)\z/, message: "can only contain letters, periods, and hyphens" }
+
+  validates :first_name , length: { maximum: 15 }
+
   validates :last_name, presence: true
+
+  validates :last_name, format: { with: /\A^[a-zA-Z].*\z/, message: "must begin with a letter" }
+
+  validates :last_name, format: { with: /\A([a-zA-Z\-.]+)\z/, message: "can only contain letters, periods, and hyphens" }
+
+  validates :last_name , length: { maximum: 15 }
 
   # https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s12.html
   # ^$ matches an empty string, ^(?!... matches an SSN.  There is a | between the two expressions because SSN is optional
