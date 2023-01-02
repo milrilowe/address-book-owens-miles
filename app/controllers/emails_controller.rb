@@ -1,6 +1,6 @@
 class EmailsController < ApplicationController
   before_action :set_email, only: [:show, :edit, :update, :destroy]
-  before_action :set_person, only: [:show, :new, :create, :edit, :update]
+  before_action :set_person, only: [:show, :new, :create, :edit, :update, :destroy]
 
   def index
     @emails = Email.all
@@ -18,7 +18,7 @@ class EmailsController < ApplicationController
     @email = @person.emails.new(email_params)
 
     if @email.save
-      redirect_to person_path(@person)
+      redirect_to person_path(@person), notice: "Email was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -32,7 +32,7 @@ class EmailsController < ApplicationController
     @email.update(email_params)
 
     if @email.update(email_params)
-      redirect_to @person
+      redirect_to @person, notice: "Email was successfully updated."
     else
       render :new, status: :unprocessable_entity
     end
@@ -41,7 +41,7 @@ class EmailsController < ApplicationController
   def destroy
     @email.destroy
 
-    redirect_to addresses_path
+    redirect_to @person, notice: "Email was successfully destroyed.", status: :see_other
   end
 
   private

@@ -1,6 +1,6 @@
 class PhoneNumbersController < ApplicationController
   before_action :set_phone_number, only: [:show, :edit, :update, :destroy]
-  before_action :set_person, only: [:show, :new, :create, :edit, :update]
+  before_action :set_person, only: [:show, :new, :create, :edit, :update, :destroy]
 
   def index
     @phone_numbers = PhoneNumber.all
@@ -18,7 +18,7 @@ class PhoneNumbersController < ApplicationController
     @phone_number = @person.phone_numbers.new(phone_number_params)
 
     if @phone_number.save
-      redirect_to person_path(@person)
+      redirect_to person_path(@person), notice: "Phone Number was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -32,7 +32,7 @@ class PhoneNumbersController < ApplicationController
     @phone_number.update(phone_number_params)
 
     if @phone_number.update(phone_number_params)
-      redirect_to @person
+      redirect_to @person, notice: "Phone Number was successfully updated."
     else
       render :new, status: :unprocessable_entity
     end
@@ -41,7 +41,7 @@ class PhoneNumbersController < ApplicationController
   def destroy
     @phone_number.destroy
 
-    redirect_to addresses_path
+    redirect_to @person, notice: "Phone Number was successfully destroyed.", status: :see_other
   end
 
   private
