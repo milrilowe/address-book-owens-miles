@@ -1,0 +1,20 @@
+<section class="phone-numbers">
+  <div class="card">
+    <div class="card-header heading" id="phone-numbers-heading">
+      <h4>
+        Phone Numbers
+      </h4>
+    </div>
+    <section class="card-body" id="phone-numbers-section">
+      <% if @person.phone_numbers.length == 0  %>
+        <p>No phone numbers</p>
+      <% end %>
+      <ol id="phone-numbers">
+        <%= render @phone_numbers %>
+      </ol>
+      <div class="button-right">
+        <%= link_to 'Add Phone Number', new_person_phone_number_path(@person), class:"btn btn-secondary" %>
+      </div>
+    </section>
+  </div>
+</section>
