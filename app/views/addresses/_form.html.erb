@@ -33,7 +33,7 @@
 
   <div>
     <%= form.label :country %><br>
-    <%= form.select :country, Country.all.map { |country| [ country.to_s, country.id ] } %>
+    <%= form.select :country, Country.all.map { |country| [ country.to_s ] } %>
     <% @address.errors.full_messages_for(:country).each do |message| %>
       <div><%= message %></div>
     <% end %>
