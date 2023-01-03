@@ -14,7 +14,9 @@ require('jquery')
 require("../stylesheets/application.scss")
 
 // Custom JS
-require('packs/fadeToggle')
+// require('packs/fadeToggle')
+// require('packs/modals')
+// require('packs/filterPeople')
 
 Rails.start()
 Turbolinks.start()
