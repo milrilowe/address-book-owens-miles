@@ -1,17 +1,42 @@
 <section class="phone-numbers">
   <div class="card">
+
     <div class="card-header heading" id="phone-numbers-heading">
       <h4>
         Phone Numbers
       </h4>
     </div>
+
     <section class="card-body" id="phone-numbers-section">
       <% if @person.phone_numbers.length == 0  %>
         <p>No phone numbers</p>
+      <% elsif @person.phone_numbers.length == 1 %>
+          <%= render @phone_numbers %>
+      <% else %>
+        <div id="phoneNumbersCarousel" class="carousel slide" data-touch="true">
+          <div class="carousel-indicators">
+            <% # Indicator on bottom of carousel %>
+            <% @person.phone_numbers.each_with_index do |phone_number, index| %>
+              <button type="button" data-bs-target="#phoneNumbersCarousel" data-bs-slide-to="<%= index %>" class="active" aria-current="true" aria-label="Slide <%= index + 1 %>"></button>
+            <% end %>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#phoneNumbersCarousel" data-bs-slide="prev" >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <div class="carousel-inner" >
+            <% @person.phone_numbers.each_with_index do |phone_number, index| %>
+              <div class="carousel-item <%= index == 0 ? 'active' : '' %>">
+                <%= render phone_number %>
+              </div>
+            <% end %>
+          </div>
+          <button class="carousel-control-next" type="button" data-bs-target="#phoneNumbersCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
       <% end %>
-      <ol id="phone-numbers">
-        <%= render @phone_numbers %>
-      </ol>
       <div class="button-right">
         <%= link_to 'Add Phone Number', new_person_phone_number_path(@person), class:"btn btn-secondary" %>
       </div>
