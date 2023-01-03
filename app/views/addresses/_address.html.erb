@@ -1,15 +1,44 @@
-<div id="address-card" class="card">
-  <div id="address-body" class="card-body">
+<div id="address-card" class="card carousel-card">
+  <div id="address-body" class="card-body carousel-card-body">
     <div class="edit-address">
       <%= link_to "Edit", edit_person_address_path(@person, address) %>
     </div>
     <div>
-      <p>Street: <%= address.street %></p>
-      <p>Town: <%= address.town %></p>
-      <p>State: <%= address.state %></p>
-      <p>Zip Code: <%= address.zip_code %></p>
-      <p>Country: <%= address.country.to_s %></p>
+      <p>Street:
+        <% if address.street.strip.length > 0 %>
+          <%= address.street %>
+        <% else %>
+          N/A
+        <% end %>
+      </p>
+      <p>Town:
+        <% if address.town.strip.length > 0 %>
+          <%= address.street %>
+        <% else %>
+          N/A
+        <% end %>
+      </p>
+      <p>State:
+        <% if address.state.strip.length > 0 %>
+          <%= address.state %>
+        <% else %>
+          N/A
+        <% end %>
+      </p>
+      <p>Zip Code:
+        <% if address.zip_code.strip.length > 0 %>
+          <%= address.zip_code %>
+        <% else %>
+          N/A
+        <% end %>
+      </p>
+      <p>Country:
+        <% if address.country.strip.length > 0 %>
+          <%= address.country %>
+        <% else %>
+          N/A
+        <% end %>
+      </p>
     </div>
   </div>
 </div>
-
