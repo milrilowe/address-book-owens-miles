@@ -28,8 +28,6 @@ li {
 }
 
 .carousel-card {
-  display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
 }
@@ -40,6 +38,17 @@ li {
   justify-content: space-around;
   margin-left: 13%;
   margin-right: 13%;
-  max-width: 4.5in;
-  min-width: 2.5in;
+  min-width: 2.8in;
+}
+
+.carousel-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.entry {
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
 }
