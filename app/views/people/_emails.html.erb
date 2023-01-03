@@ -1,17 +1,42 @@
 <section class="emails">
   <div class="card">
+
     <div class="card-header heading" id="emails-heading">
       <h4>
         Emails
       </h4>
     </div>
+
     <section class="card-body" id="emails-section">
       <% if @person.emails.length == 0  %>
         <p>No emails</p>
+      <% elsif @person.emails.length == 1 %>
+          <%= render @emails %>
+      <% else %>
+        <div id="emailsCarousel" class="carousel slide" data-touch="true">
+          <div class="carousel-indicators">
+            <% # Indicator on bottom of carousel %>
+            <% @person.emails.each_with_index do |email, index| %>
+              <button type="button" data-bs-target="#emailsCarousel" data-bs-slide-to="<%= index %>" class="active" aria-current="true" aria-label="Slide <%= index + 1 %>"></button>
+            <% end %>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#emailsCarousel" data-bs-slide="prev" >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <div class="carousel-inner" >
+            <% @person.emails.each_with_index do |email, index| %>
+              <div class="carousel-item <%= index == 0 ? 'active' : '' %>">
+                <%= render email %>
+              </div>
+            <% end %>
+          </div>
+          <button class="carousel-control-next" type="button" data-bs-target="#emailsCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
       <% end %>
-      <ol id="emails">
-        <%= render @emails %>
-      </ol>
       <div class="button-right">
         <%= link_to 'Add Email', new_person_email_path(@person), class:"btn btn-secondary" %>
       </div>
