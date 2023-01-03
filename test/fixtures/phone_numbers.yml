@@ -2,7 +2,7 @@
 
 one:
   phone_number: (555) 555-5555
-  comment: MyText
+  comment: Phone number comment.
   person: full_person
 
 

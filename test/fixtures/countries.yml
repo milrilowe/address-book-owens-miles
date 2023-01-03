@@ -1,7 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# one:
-#   name: MyString
+afghanistan:
+  name: Afghanistan
 
-# two:
-#   name: MyString
+albania:
+  name: Albania
+
+algeria:
+  name: Algeria
+
+usa:
+  name: United States
