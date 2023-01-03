@@ -9,14 +9,18 @@ class PeopleTest < ApplicationSystemTestCase
   test "create an address" do
     visit person_url(@person)
 
+    click_on "Addresses"
     click_on "Add Address"
+
+    within "select[id^='address_country']" do
+      select "Afghanistan"
+    end
     fill_in "Street", with: "456 Not Real Ave."
     fill_in "Town", with: "Springfield"
     fill_in "Zip code", with: "12345"
     fill_in "State", with: "IL"
-    within "select[id^='address_country']" do
-      select "Afghanistan"
-    end
+
+
     click_on "Create Address"
 
     assert_text "Address was successfully created"
@@ -30,9 +34,12 @@ class PeopleTest < ApplicationSystemTestCase
 
   test "update an address" do
     visit person_url(@person)
+
+    click_on "Addresses"
     within ".edit-address" do
       click_on "Edit"
     end
+
     fill_in "Street", with: "456 Not Real Ave."
     fill_in "Town", with: "Springfield"
     fill_in "Zip code", with: "12345"
@@ -40,7 +47,9 @@ class PeopleTest < ApplicationSystemTestCase
     within "select[id^='address_country']" do
       select "Afghanistan"
     end
+
     click_on "Update Address"
+
     assert_text "Address was successfully updated"
     assert_text(:all, "Street: 456 Not Real Ave.")
     assert_text(:all, "Town: Springfield")
@@ -52,12 +61,16 @@ class PeopleTest < ApplicationSystemTestCase
 
   test "destroy an address" do
     visit person_url(@person)
+
+    click_on "Addresses"
     within ".edit-address" do
       click_on "Edit"
     end
+
     page.accept_confirm do
       click_on "Delete"
     end
+
     assert_text "Address was successfully destroyed"
     assert_selector "h1", text: "Mr. First Middle Last"
   end
