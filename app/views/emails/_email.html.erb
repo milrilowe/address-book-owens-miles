@@ -3,13 +3,15 @@
     <div class="edit-email">
       <%= link_to "Edit", edit_person_email_path(@person, email) %>
     </div>
-    <p><%= email.email_address %></p>
-    <p>Comment:
-      <% if email.comment.strip.length > 0 %>
-        <%= email.comment %>
-      <% else %>
-        N/A
-      <% end %>
-    </p>
+    <div id="email-entry" class="entry">
+      <p><%= email.email_address %></p>
+      <p>Comment:
+        <% if email.comment.strip.length > 0 %>
+          <%= email.comment %>
+        <% else %>
+          N/A
+        <% end %>
+      </p>
+    </div>
   </div>
 </div>
