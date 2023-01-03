@@ -1,31 +1,18 @@
 <br/>
-<%
-=begin%>
- <nav class="navbar bg-body-tertiary">
-  <div class="container-fluid">
-<%
-=end%>
     <h1 class="navbar-brand">People</h1>
-    <%
-=begin%>
- <div class="d-flex">
-      <input class="form-control me-2" id="filter-people" type="text" placeholder="Search" aria-label="Search">
-    </div>
-  </div>
-</nav>
-<%
-=end%>
+
     <% if notice %>
         <%= render 'shared/alerts' %>
     <% end %>
 <ol>
   <% prevPerson = nil %>
   <% @people.each do |person| %>
-    <% if prevPerson == nil %>
-      <hr> <%= person.last_name.chr.upcase %> <hr>
-    <% end %>
-    <% if prevPerson && prevPerson.last_name.chr.upcase != person.last_name.chr.upcase %>
-      <hr> <%= person.last_name.chr.upcase %> <hr>
+    <% if @people.length >= 10 %>
+      <% if prevPerson == nil %>
+        <hr> <%= person.last_name.chr.upcase %> <hr>
+      <% elsif prevPerson && prevPerson.last_name.chr.upcase != person.last_name.chr.upcase %>
+        <hr> <%= person.last_name.chr.upcase %> <hr>
+      <% end %>
     <% end %>
     <li>
       <%= render person %>
