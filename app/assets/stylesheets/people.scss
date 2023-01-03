@@ -26,3 +26,20 @@ li {
 .details, .addresses, .emails, .phone-numbers {
   margin: 1rem 0;
 }
+
+.carousel-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 13%;
+  margin-right: 13%;
+  max-width: 4.5in;
+  min-width: 2.5in;
+}
