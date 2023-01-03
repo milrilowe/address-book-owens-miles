@@ -2,8 +2,8 @@ class PeopleController < ApplicationController
   before_action :set_person, only: [:show, :edit, :update, :destroy]
 
   def index
-    # Return sorted by last name
-    @people = Person.all.order(:last_name)
+    # Return sorted by last name (then first name if last name is the same, then middle name if first name is the same)
+    @people = Person.all.order(:last_name, :first_name, :middle_name)
   end
 
   def create
