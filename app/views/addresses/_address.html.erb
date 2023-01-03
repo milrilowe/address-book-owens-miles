@@ -3,7 +3,7 @@
     <div class="edit-address">
       <%= link_to "Edit", edit_person_address_path(@person, address) %>
     </div>
-    <div>
+    <div id="address-entry" class="entry">
       <p>Street:
         <% if address.street.strip.length > 0 %>
           <%= address.street %>
