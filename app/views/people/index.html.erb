@@ -1,9 +1,14 @@
 <br/>
-    <h1 class="navbar-brand">People</h1>
+<h1 class="navbar-brand">People</h1>
 
-    <% if notice %>
-        <%= render 'shared/alerts' %>
-    <% end %>
+<div class="button-right">
+  <%= link_to "New Person", new_person_path, class:"btn btn-secondary" %>
+</div>
+
+<% if notice %>
+    <%= render 'shared/alerts' %>
+<% end %>
+
 <ol>
   <% prevPerson = nil %>
   <% @people.each do |person| %>
@@ -21,4 +26,3 @@
   <% end %>
 </ol>
 
-<%= link_to "New Person", new_person_path %>
