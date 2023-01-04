@@ -1,0 +1,3 @@
+$('#phoneNumberFormModal').remove();
+$('body').append('<%= j render 'modal', locals: {person: @person, email: @email} %>');
+$('#phoneNumberFormModal').modal('show');

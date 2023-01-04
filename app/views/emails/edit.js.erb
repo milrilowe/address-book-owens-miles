@@ -1,0 +1,3 @@
+$('#emailFormModal').remove();
+$('body').append('<%= j render 'modal', locals: {person: @person, email: @email} %>');
+$('#emailFormModal').modal('show');

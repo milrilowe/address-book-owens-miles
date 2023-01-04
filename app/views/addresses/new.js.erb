@@ -1,0 +1,3 @@
+$('#addressFormModal').remove();
+$('body').append('<%= j render 'modal', locals: {person: @person} %>');
+$('#addressFormModal').modal('show');
