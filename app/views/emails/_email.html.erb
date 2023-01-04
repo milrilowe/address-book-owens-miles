@@ -1,7 +1,7 @@
 <div id="email-card" class="card carousel-card">
   <div id="email-body" class="card-body carousel-card-body">
     <div class="edit-email">
-      <%= link_to "Edit", edit_person_email_path(@person, email) %>
+      <%= link_to "Edit", edit_person_email_path(format: :js, person_id: @person.id, id: email.id), remote: true %>
     </div>
     <div id="email-entry" class="entry">
       <p><%= email.email_address %></p>

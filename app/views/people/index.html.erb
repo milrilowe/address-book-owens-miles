@@ -2,8 +2,10 @@
 <h1 class="navbar-brand">People</h1>
 
 <div class="button-right">
-  <%= link_to "New Person", new_person_path, class:"btn btn-secondary" %>
+    <%= link_to "New Person", new_person_path(format: :js), remote: true %>
 </div>
+
+<br/>
 
 <% if notice %>
     <%= render 'shared/alerts' %>
@@ -11,7 +13,9 @@
 
 <ol>
   <% prevPerson = nil %>
-  <% @people.each do |person| %>
+  <% sorted = @people.order(:last_name, :first_name, :middle_name) %>
+
+  <% sorted.each do |person| %>
     <% if @people.length >= 10 %>
       <% if prevPerson == nil %>
         <hr> <%= person.last_name.chr.upcase %> <hr>
@@ -26,3 +30,5 @@
   <% end %>
 </ol>
 
+<!-- New Person Form Modal -->
+<%= render 'modal' %>

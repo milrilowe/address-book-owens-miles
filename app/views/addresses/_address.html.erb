@@ -1,7 +1,7 @@
 <div id="address-card" class="card carousel-card">
   <div id="address-body" class="card-body carousel-card-body">
     <div class="edit-address">
-      <%= link_to "Edit", edit_person_address_path(@person, address) %>
+      <%= link_to "Edit", edit_person_address_path(format: :js, person_id: @person.id, id: address.id), remote: true %>
     </div>
     <div id="address-entry" class="entry">
       <p>Street:
@@ -39,6 +39,23 @@
           N/A
         <% end %>
       </p>
+    </div>
+  </div>
+</div>
+
+<a><%=  @person.addresses.find(address.id).street %></a>
+
+<!-- Edit Address Form Modal -->
+<div class="modal fade" id="editAddressFormModal" tabindex="-1" aria-labelledby="editAddressFormModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="editAddressFormModal">Edit Address for <%= @person.informal_name %></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= render 'addresses/form', person: @person, address: @person.addresses.find(address.id) %>
+      </div>
     </div>
   </div>
 </div>
