@@ -1,20 +1,20 @@
 <br/>
 
-    <% if notice %>
-        <%= render 'shared/alerts' %>
-    <% end %>
+<% if notice %>
+  <%= render 'shared/alerts' %>
+<% end %>
 
-    <%= render 'details' %>
+<%= render 'details' %>
 
-    <div class="accordion" id="accordion">
-        <%= render 'addresses' %>
+<div class="accordion" id="accordion">
 
-        <%= render 'emails' %>
+  <%= render 'addresses' %>
 
-        <%= render 'phone_numbers' %>
-    </div>
+  <%= render 'emails' %>
+
+  <%= render 'phone_numbers' %>
+</div>
 
 <br/>
 
 <%= link_to "Back", people_path, class:"btn btn-secondary" %>
-
