@@ -40,7 +40,7 @@
             </div>
           <% end %>
           <div class="button-right">
-            <%= link_to 'Add Phone Number', new_person_phone_number_path(@person), class:"btn btn-secondary" %>
+            <%= link_to "New Phone Number", new_person_phone_number_path(format: :js, person_id: @person.id), remote: true %>
           </div>
         </section>
       </div>

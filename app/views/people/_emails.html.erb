@@ -40,7 +40,7 @@
             </div>
           <% end %>
           <div class="button-right">
-            <%= link_to 'Add Email', new_person_email_path(@person), class:"btn btn-secondary" %>
+            <%= link_to "New Email", new_person_email_path(format: :js, person_id: @person.id), remote: true %>
           </div>
         </section>
       </div>

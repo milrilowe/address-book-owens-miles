@@ -40,7 +40,7 @@
             </div>
           <% end %>
           <div class="button-right">
-            <%= link_to 'Add Address', new_person_address_path(@person, @address), {class:"btn btn-secondary", 'data-toggle': "address-form-modal"} %>
+            <%= link_to "Add Address", new_person_address_path(format: :js, person_id: @person.id), remote: true %>
           </div>
         </section>
       </div>
