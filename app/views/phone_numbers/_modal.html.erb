@@ -1,0 +1,13 @@
+<div class="modal fade" id="phoneNumberFormModal" tabindex="-1" aria-labelledby="phoneNumberFormModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="phoneNumberFormModal">New Phone Number for <%= @person.informal_name %></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= render 'phone_numbers/form', person: @person, phone_number: @person.phone_numbers.new %>
+      </div>
+    </div>
+  </div>
+</div>

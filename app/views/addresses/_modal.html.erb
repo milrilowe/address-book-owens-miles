@@ -1,0 +1,13 @@
+<div class="modal fade" id="addressFormModal" tabindex="-1" aria-labelledby="addressFormModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="addressFormModal">New Address for <%= @person.informal_name %></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= render 'addresses/form', person: @person, address: @address %>
+      </div>
+    </div>
+  </div>
+</div>
