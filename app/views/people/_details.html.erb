@@ -8,14 +8,14 @@
     <% end %>
   </p>
   <p>SSN:
-    <% if @person.ssn.strip.length > 0 %>
+    <% if @person.ssn && @person.ssn.strip.length > 0 %>
       <%= @person.ssn %>
     <% else %>
       N/A
     <% end %>
   </p>
   <p>Comment:
-    <% if @person.comment.strip.length > 0 %>
+    <% if @person.comment && @person.comment.strip.length > 0 %>
       <%= @person.comment %>
     <% else %>
       N/A
@@ -23,6 +23,6 @@
   </p>
   <br/>
   <div class="button-right">
-    <%= link_to 'Edit Info', edit_person_path(@person), class:"btn btn-secondary" %>
+    <%= link_to 'Edit Info', edit_person_path(format: :js), remote: true, class:"btn btn-secondary" %>
   </div>
 </section>
