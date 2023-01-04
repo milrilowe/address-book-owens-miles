@@ -1,2 +1,11 @@
-<h1>Emails#index</h1>
-<p>Find me in app/views/emails/index.html.erb</p>
+<h1>Emails</h1>
+
+<ul>
+  <% @person.emails.each do |email| %>
+    <li>
+      <%= link_to email.email_address, person_email_path(@person, email) %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Add email', new_person_email_path %>
