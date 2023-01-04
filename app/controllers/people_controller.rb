@@ -2,26 +2,38 @@ class PeopleController < ApplicationController
   before_action :set_person, only: [:show, :edit, :update, :destroy]
 
   def index
-    # Return sorted by last name (then first name if last name is the same, then middle name if first name is the same)
-    @people = Person.all.order(:last_name, :first_name, :middle_name)
+    @people = Person.all
+    @person = Person.new
   end
 
   def create
     @person = Person.new(person_params)
 
-    if @person.save
-      redirect_to @person, notice: "Person was successfully created."
-    else
-      render :new, status: :unprocessable_entity
+    respond_to do |format|
+      if @person.save
+        format.html { redirect_to @person, notice: "Person was successfully created." }
+        format.json { render :show, status: :created, location: @person }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @person.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   def new
     @person = Person.new
+
+    respond_to do |format|
+      format.js # render new.js.erb
+    end
   end
 
   def edit
     @person = Person.find(params[:id])
+
+    respond_to do |format|
+      format.js # render edit.js.erb
+    end
   end
 
   def show
@@ -29,21 +41,37 @@ class PeopleController < ApplicationController
     @addresses = @person.addresses
     @emails = @person.emails
     @phone_numbers = @person.phone_numbers
+    @address = Address.new
+    @email = Email.new
+    @phone_number = PhoneNumber.new
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @person }
+    end
+
   end
 
   def update
     @person = Person.find(params[:id])
 
-    if @person.update(person_params)
-      redirect_to @person, notice: "Person was successfully updated."
-    else
-      render :edit, status: :unprocessable_entity
+    respond_to do |format|
+      if @person.update(person_params)
+        format.html { redirect_to @person, notice: "Person was successfully updated." }
+        format.json { render :show, status: :ok, location: @person }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @person.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   def destroy
     @person.destroy
-    redirect_to people_path, notice: "Person was successfully destroyed.", status: :see_other
+    respond_to do |format|
+      format.html { redirect_to people_path, notice: "Person was successfully destroyed.", status: :see_other }
+      format.json { render json: @person.errors }
+    end
   end
 
   private

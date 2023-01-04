@@ -1,45 +1,65 @@
 class AddressesController < ApplicationController
   before_action :set_person
-  before_action :set_address, only: [:show, :edit, :update, :destroy]
+  before_action :set_address, only: [:show, :update, :destroy, :edit]
 
   def index
     @addresses = Address.all
   end
 
   def show
-
+    respond_to do |format|
+      format.html
+      format.json { render json: @address }
+    end
   end
 
   def new
-    @address = Address.new
+    @address = @person.addresses.new
+
+    respond_to do |format|
+      format.js # render new.js.erb
+    end
   end
 
   def create
     @address = @person.addresses.new(address_params)
 
-    if @address.save
-      redirect_to person_path(@person), notice: "Address was successfully created."
-    else
-      render :new, status: :unprocessable_entity
+    respond_to do |format|
+      if @address.save
+        format.html { redirect_to person_path(@person), notice: "Address was successfully created." }
+        format.json { render :show, status: :created, location: @person }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @address.errors, status: :unprocessable_entity }
+      end
     end
+
   end
 
   def edit
-
+    respond_to do |format|
+      format.js # render edit.js.erb
+    end
   end
 
   def update
-    if @address.update(address_params)
-      redirect_to @person, notice: "Address was successfully updated."
-    else
-      render :new, status: :unprocessable_entity
+    respond_to do |format|
+      if @address.update(address_params)
+        format.html { redirect_to @person, notice: "Address was successfully updated." }
+        format.json { render :show, status: :ok, location: @person }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @address.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   def destroy
     @address.destroy
-
-    redirect_to @person, notice: "Address was successfully destroyed.", status: :see_other
+    respond_to do |format|
+      format.html { redirect_to @person, notice: "Address was successfully destroyed.", status: :see_other }
+      format.json { head json: @address.errors }
+    end
   end
 
   private
