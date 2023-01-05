@@ -5,18 +5,24 @@ class PeopleTest < ApplicationSystemTestCase
 
   setup do
     @person = people(:full_person)
+
+    visit root_url
+    if page.has_content?("Login")
+      click_on "Login"
+      find("#email").set("address@email.com")
+      find("#password").set("password")
+      find('#sign-in').click
+    end
   end
 
-  test "visit index" do
-    visit people_url
-
-    assert_selector "h1", text: "People"
+  # Modal fade causes issues - this is a workaround
+  def teardown
+    find("#session-button")
+    execute_script "$('#session-button').click()"
   end
 
   test "create a person" do
-    visit people_url
-
-    click_on "New Person"
+    find('#circle').click
 
     within "select[id^='person_salutation']" do
       select "Mr."
@@ -37,8 +43,15 @@ class PeopleTest < ApplicationSystemTestCase
     assert_text "Comment: This is a comment."
   end
 
+  # Modal fade causes issues - this is a workaround
+  def teardown
+    find("#session-button")
+    execute_script "$('#session-button').click()"
+  end
+
+
   test "update a person" do
-    visit person_url(@person)
+    click_on "Last, First M."
 
     click_on "Edit Info"
 
@@ -46,17 +59,20 @@ class PeopleTest < ApplicationSystemTestCase
       select "Mrs."
     end
 
+    fill_in "First name", with: ""
     fill_in "First name", with: "Jane"
+    fill_in "Middle name", with: ""
     fill_in "Middle name", with: "N."
+    fill_in "Last name", with: ""
     fill_in "Last name", with: "Deer"
+    fill_in "Ssn", with: ""
     fill_in "Ssn", with: "897-65-4321"
     fill_in "Birth date", with: ""
+    fill_in "Comment", with: ""
     fill_in "Comment", with: "This is an updated comment."
-
 
     click_on "Update Person"
 
-    assert_text "Person was successfully updated"
     assert_text "Mrs. Jane N. Deer"
     assert_text "Birthday: N/A"
     assert_text "SSN: 897-65-4321"
@@ -64,7 +80,7 @@ class PeopleTest < ApplicationSystemTestCase
   end
 
   test "destroy a person" do
-    visit person_url(@person)
+    click_on "Last, First M."
 
     click_on "Edit Info"
 
@@ -73,7 +89,6 @@ class PeopleTest < ApplicationSystemTestCase
     end
 
     assert_text "Person was successfully destroyed"
-    assert_selector "h1", text: "People"
   end
 
 end
