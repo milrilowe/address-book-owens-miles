@@ -1,0 +1,132 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "font-awesome";
+
+body {
+  max-width: 7in;
+  min-width: 4in;
+  margin: 0 auto !important;
+  float: none !important;
+  overflow-y: scroll !important;
+  padding: 0 !important;
+}
+
+.container {
+  padding: 0 !important;
+}
+
+.fixed-bottom {
+  overflow-y: scroll !important;
+  padding: 0 !important;
+  z-index: -1;
+}
+
+li {
+  list-style-type: none;
+}
+
+ol {
+  padding-left: 0 !important;
+}
+
+.carousel-control-next-icon, .carousel-control-prev-icon, .carousel-indicators {
+  filter: invert(1) grayscale(100);
+}
+
+.carousel-container {
+  display: inline-block;
+}
+
+.heading {
+  cursor: pointer;
+}
+
+.card {
+  margin-bottom: .25rem;
+}
+
+.button-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.details, .addresses, .emails, .phone-numbers {
+  margin: 1rem 0;
+}
+
+.carousel-card {
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 13%;
+  margin-right: 13%;
+  min-width: 2.8in;
+}
+
+.carousel-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.entry {
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.nav-item {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navbar {
+  width: 100%
+}
+
+#circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5em
+}
+
+#plus {
+  margin: auto;
+
+}
+
+a:link { text-decoration: none; }
+
+
+a:visited { text-decoration: none; }
+
+
+a:hover { text-decoration: none; }
+
+
+a:active { text-decoration: none; }
+
+.wrapper {
+  padding-left: .25in;
+  padding-right: .25in;
+}
