@@ -10,7 +10,7 @@ class PeopleController < ApplicationController
   end
 
   def create
-    @person = Current.user.people.new(person_params)
+    @person = Current.user.people.new(valid_params)
 
     respond_to do |format|
       if @person.save
@@ -32,7 +32,8 @@ class PeopleController < ApplicationController
   end
 
   def edit
-    @person = Person.find(params[:id])
+    @person.birth_date = @person.birth_date.strftime("%m/%d/%Y")
+
     respond_to do |format|
       format.js # render edit.js.erb
     end
@@ -56,7 +57,7 @@ class PeopleController < ApplicationController
 
   def update
     respond_to do |format|
-      if @person.update(person_params)
+      if @person.update(valid_params)
         format.js # render update.js.erb
         format.json { render :show, status: :ok, location: @person }
       else
@@ -92,6 +93,18 @@ class PeopleController < ApplicationController
         else
           redirect_to root_path, notice: "You are not authorized to view this page."
         end
+      end
+    end
+
+    def valid_params
+      parameters = person_params.to_h
+      date = parameters[:birth_date]
+      mmddyyyy = date.split("/")
+      begin
+        parameters[:birth_date] = Date.parse(mmddyyyy[2] + mmddyyyy[0] + mmddyyyy[1])
+        return parameters
+      rescue ArgumentError
+        redirect_to root_path, notice: "Invalid date format. Please use MM/DD/YYYY."
       end
     end
 end
