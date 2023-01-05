@@ -7,16 +7,13 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-import "bootstrap"
 
 require("@popperjs/core")
-require('jquery')
 require("../stylesheets/application.scss")
 
-// Custom JS
-// require('packs/fadeToggle')
-// require('packs/modals')
-// require('packs/filterPeople')
+import JQuery from 'jquery';
+window.$ = window.JQuery = JQuery;
+import "bootstrap"
 
 Rails.start()
 Turbolinks.start()
