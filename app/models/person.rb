@@ -1,7 +1,11 @@
 class Person < ApplicationRecord
+  belongs_to :user
+
   has_many :addresses, dependent: :destroy
   has_many :emails, dependent: :destroy
   has_many :phone_numbers, dependent: :destroy
+
+  before_save :set_default_fields
 
   validates :salutation, inclusion: {
     in: [nil, '', 'Mr.', 'Mrs.', 'Ms.'], # I'd prefer to not have nil included
@@ -37,5 +41,12 @@ class Person < ApplicationRecord
 
   def informal_name
     "#{first_name} #{last_name}"
+  end
+
+  def set_default_fields
+    self.salutation = "" if self.salutation.nil?
+    self.middle_name = "" if self.middle_name.nil?
+    self.ssn = "" if self.ssn.nil?
+    self.comment = "" if self.comment.nil?
   end
 end
