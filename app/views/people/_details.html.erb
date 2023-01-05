@@ -3,7 +3,7 @@
   <div style="margin-left:.125in;padding:.125in">
     <p><b class="fw-bold">Birthday:</b>
       <% if @person.birth_date %>
-        <%= @person.birth_date %>
+        <%= @person.birth_date.strftime("%b %d, %Y") %>
       <% else %>
         N/A
       <% end %>
