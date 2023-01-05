@@ -1,5 +1,5 @@
-<%= form_with model: [@person, @phone_number] do |form| %>
-  <div>
+<%= form_with model: [@person, @phone_number], remote: true, local: false do |form| %>
+  <div class="fw-bold">
     <%= form.label :phone_number %><br>
     <%= form.text_field :phone_number %>
     <% @phone_number.errors.full_messages_for(:phone_number).each do |message| %>
@@ -7,7 +7,7 @@
     <% end %>
   </div>
 
-  <div>
+  <div class="fw-bold">
     <%= form.label :comment %><br>
     <%= form.text_field :comment %>
     <% @phone_number.errors.full_messages_for(:comment).each do |message| %>
@@ -15,9 +15,11 @@
     <% end %>
   </div>
 
-  <%= form.submit %>
+  <span class="d-flex justify-content-between">
+    <%= form.submit class: "btn btn-success" %>
 
   <% if !@phone_number.new_record? %>
-    <%= link_to "Delete", person_phone_number_path(@person, @phone_number), data: { method: :delete, confirm: "Are you sure?" } %>
+    <%= link_to "Delete", person_phone_number_path(@person, @phone_number), data: { method: :delete, confirm: "Are you sure?" }, class: "btn btn-danger", remote: true %>
   <% end %>
+  </span>
 <% end %>

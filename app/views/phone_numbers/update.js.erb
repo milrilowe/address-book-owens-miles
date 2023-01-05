@@ -1,0 +1,15 @@
+$('#person-phone-numbers').empty();
+$('#person-phone-numbers').append('<%= j render 'people/phone_numbers' %>');
+
+$('#phoneNumberFormModal').modal('hide');
+$('#phoneNumberFormModal').remove();
+
+$('#flush-collapseThree').addClass("collapse show");
+
+$("#phone-number-carousel-inner").children('.active').removeClass('active');
+$('#carousel-item-phone-number-<%= @phone_number.id %>').addClass('active');
+
+$("#phone-number-carousel-indicators").children().removeAttr('aria-current');
+$("#phone-number-carousel-indicators").children().removeClass('active');
+
+$('#phone-number-indicator-<%= @phone_number.id %>').attr('aria-current', 'true').addClass('active');

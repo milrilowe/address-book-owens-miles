@@ -1,39 +1,39 @@
-<div id="address-card" class="card carousel-card">
-  <div id="address-body" class="card-body carousel-card-body">
+<div id="address-card-<%= address.id %>" class="card carousel-card">
+  <div id="address-body-<%= address.id %>" class="card-body carousel-card-body">
     <div class="edit-address">
       <%= link_to "Edit", edit_person_address_path(format: :js, person_id: @person.id, id: address.id), remote: true %>
     </div>
-    <div id="address-entry" class="entry">
-      <p>Street:
-        <% if address.street.strip.length > 0 %>
+    <div id="address-entry-<%= address.id %>" class="entry">
+      <p><b class="fw-bold">Street:</b>
+        <% if address && address.street.strip.length > 0 %>
           <%= address.street %>
         <% else %>
           N/A
         <% end %>
       </p>
-      <p>Town:
-        <% if address.town.strip.length > 0 %>
+      <p><b class="fw-bold">Town:</b>
+        <% if address && address.town.strip.length > 0 %>
           <%= address.town %>
         <% else %>
           N/A
         <% end %>
       </p>
-      <p>State:
-        <% if address.state.strip.length > 0 %>
+      <p><b class="fw-bold">State:</b>
+        <% if address && address.state.strip.length > 0 %>
           <%= address.state %>
         <% else %>
           N/A
         <% end %>
       </p>
-      <p>Zip Code:
-        <% if address.zip_code.strip.length > 0 %>
+      <p><b class="fw-bold">Zip Code:</b>
+        <% if address && address.zip_code.strip.length > 0 %>
           <%= address.zip_code %>
         <% else %>
           N/A
         <% end %>
       </p>
-      <p>Country:
-        <% if address.country.strip.length > 0 %>
+      <p><b class="fw-bold">Country:</b>
+        <% if address && address.country.strip.length > 0 %>
           <%= address.country %>
         <% else %>
           N/A

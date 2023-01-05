@@ -1,48 +1,49 @@
-<%= form_with model: [@person, @address] do |form| %>
-  <div>
+<%= form_with model: [@person, @address], remote: true, local: false do |form| %>
+  <div class="fw-bold">
     <%= form.label :street %><br>
-    <%= form.text_field :street %>
+    <%= form.text_field :street, class: "form-control", placeholder: "Street" %>
     <% @address.errors.full_messages_for(:street).each do |message| %>
       <div><%= message %></div>
     <% end %>
-  </div>
+  </div><br>
 
-  <div>
+  <div class="fw-bold">
     <%= form.label :town %><br>
-    <%= form.text_field :town %>
+    <%= form.text_field :town, class: "form-control", placeholder: "Town" %>
     <% @address.errors.full_messages_for(:town).each do |message| %>
       <div><%= message %></div>
     <% end %>
-  </div>
+  </div><br>
 
-  <div>
+  <div class="fw-bold">
     <%= form.label :zip_code %><br>
-    <%= form.text_field :zip_code %>
+    <%= form.text_field :zip_code, class: "form-control", placeholder: "Zip Code" %>
     <% @address.errors.full_messages_for(:zip_code).each do |message| %>
       <div><%= message %></div>
     <% end %>
-  </div>
+  </div><br>
 
-  <div>
+  <div class="fw-bold">
     <%= form.label :state %><br>
-    <%= form.text_field :state %>
+    <%= form.text_field :state, class: "form-select", placeholder: "State" %>
     <% @address.errors.full_messages_for(:state).each do |message| %>
       <div><%= message %></div>
     <% end %>
-  </div>
+  </div><br>
 
-  <div>
+  <div class="fw-bold">
     <%= form.label :country %><br>
-    <%= form.select :country, Country.all.map { |country| [ country.to_s ] } %>
+    <%= form.select :country, Country.all.map { |country| [ country.to_s ] }, class: "custom-select" %>
     <% @address.errors.full_messages_for(:country).each do |message| %>
       <div><%= message %></div>
     <% end %>
-  </div>
+  </div><br>
 
-  <%= form.submit %>
+  <span class="d-flex justify-content-between">
+    <%= form.submit class: "btn btn-success" %>
 
   <% if !@address.new_record? %>
-    <%= link_to "Delete", person_address_path(@person, @address), data: { method: :delete, confirm: "Are you sure?" } %>
+    <%= link_to "Delete", person_address_path(@person, @address), data: { method: :delete, confirm: "Are you sure?" }, class: "btn btn-danger", remote: true %>
   <% end %>
-
+  </span>
 <% end %>

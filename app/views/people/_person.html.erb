@@ -1,3 +1,7 @@
 <li>
-  <%= link_to "#{person.last_name}, #{person.first_name} #{person.middle_name.chr}", person %>
+  <div class="fs-2 rounded d-flex justify-content-center <%= index % 2 == 0 ? 'bg-dark' : 'bg-light' %>">
+    <%= link_to "#{person.last_name}, #{person.first_name} #{person.middle_name.strip.length > 0 ? person.middle_name.chr + '.' : ''}", person, class: index % 2 == 0 ?
+      'link-light px-4 py-2 w-100 h-100 position-relative top-0 bottom-0 right-0 left-0' :
+      'link-dark px-4 py-2 w-100 h-100 position-relative top-0 bottom-0 right-0 left-0' %>
+  </div>
 </li>

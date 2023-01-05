@@ -1,20 +1,35 @@
-<br/>
+<%= render 'shared/nav' %>
+<div class="wrapper">
+  <% if notice %>
+      <%= render 'shared/alerts' %>
+  <% end %>
 
-<% if notice %>
-  <%= render 'shared/alerts' %>
-<% end %>
+  <section id="details-section" class="details">
+    <%= render 'details' %>
+  </section>
 
-<%= render 'details' %>
+  <div class="accordion" id="accordion">
+    <section id="addresses-section" class="addresses">
+      <div id="person-addresses">
+        <%= render 'addresses' %>
+      </div>
+    </section>
 
-<div class="accordion" id="accordion">
+    <section id="emails-section" class="emails">
+      <div id="person-emails">
+        <%= render 'emails' %>
+      </div>
+    </section>
 
-  <%= render 'addresses' %>
+    <section id="phone-numbers-section" class="phone-numbers">
+      <div id="person-phone-numbers">
+        <%= render 'phone_numbers' %>
+      </div>
+    </section>
+  </div>
 
-  <%= render 'emails' %>
-
-  <%= render 'phone_numbers' %>
+  <br/>
+  <div class="fw-bold">
+    <%= link_to "Back", root_path, class:"btn btn-warning fw-bold" %>
+  </div>
 </div>
-
-<br/>
-
-<%= link_to "Back", people_path, class:"btn btn-secondary" %>

@@ -1,5 +1,5 @@
-<%= form_with model: [@person, @email] do |form| %>
-  <div>
+<%= form_with model: [@person, @email], remote: true, local: false do |form| %>
+  <div class="fw-bold">
     <%= form.label :email_address %><br>
     <%= form.text_field :email_address %>
     <% @email.errors.full_messages_for(:email_address).each do |message| %>
@@ -7,7 +7,7 @@
     <% end %>
   </div>
 
-  <div>
+  <div class="fw-bold">
     <%= form.label :comment %><br>
     <%= form.text_field :comment %>
     <% @email.errors.full_messages_for(:comment).each do |message| %>
@@ -15,8 +15,11 @@
     <% end %>
   </div>
 
-  <%= form.submit %>
-  <% if !@email.new_record? %>
-    <%= link_to "Delete", person_email_path(@person, @email), data: { method: :delete, confirm: "Are you sure?" } %>
-  <% end %>
+  <span class="d-flex justify-content-between">
+    <%= form.submit class: "btn btn-success" %>
+
+    <% if !@email.new_record? %>
+    <%= link_to "Delete", person_email_path(@person, @email), data: { method: :delete, confirm: "Are you sure?" }, class: "btn btn-danger", remote: true %>
+    <% end %>
+  </span>
 <% end %>

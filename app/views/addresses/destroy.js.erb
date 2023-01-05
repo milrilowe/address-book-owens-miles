@@ -1,0 +1,15 @@
+$('#person-addresses').empty();
+$('#person-addresses').append('<%= j render 'people/addresses' %>');
+
+$('#addressFormModal').modal('hide');
+$('#addressFormModal').remove();
+
+$('#flush-collapseOne').addClass("collapse show");
+
+$("#address-carousel-inner").children('.active').removeClass('active');
+$('#carousel-item-address-<%= @address ? @address.id : '' %>').addClass('active');
+
+$("#address-carousel-indicators").children().removeAttr('aria-current');
+$("#address-carousel-indicators").children().removeClass('active');
+
+$('#address-indicator-<%= @address ? @address.id : '' %>').attr('aria-current', 'true').addClass('active');

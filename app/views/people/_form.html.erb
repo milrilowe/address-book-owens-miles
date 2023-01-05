@@ -1,66 +1,67 @@
-<%= form_with model: @person do |form| %>
-  <div>
+<%= form_with model: @person, remote: true, local: false do |form| %>
+  <div class="fw-bold">
     <%= form.label :salutation %><br>
-    <%= form.select :salutation, ["", "Mr.", "Mrs.", "Ms."] %>
+    <%= form.select :salutation, ["", "Mr.", "Mrs.", "Ms."], class: "form-select" %>
     <% @person.errors.full_messages_for(:salutation).each do |message| %>
       <div><%= message %></div>
     <% end %>
-  </div>
+  </div><br>
 
-  <div>
+  <div class="fw-bold">
     <%= form.label :first_name %><br>
-    <%= form.text_field :first_name %>
+    <%= form.text_field :first_name, class: "form-control", placeholder: "First Name" %>
     <% @person.errors.full_messages_for(:first_name).each do |message| %>
       <div><%= message %></div>
     <% end %>
-  </div>
+  </div><br>
 
-  <div>
+  <div class="fw-bold">
     <%= form.label :middle_name %><br>
-    <%= form.text_field :middle_name %>
+    <%= form.text_field :middle_name, class: "form-control", placeholder: "Middle Name" %>
     <% @person.errors.full_messages_for(:middle_name).each do |message| %>
       <div><%= message %></div>
     <% end %>
-  </div>
+  </div><br>
 
-  <div>
+  <div class="fw-bold">
     <%= form.label :last_name %><br>
-    <%= form.text_field :last_name %>
+    <%= form.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
     <% @person.errors.full_messages_for(:last_name).each do |message| %>
       <div><%= message %></div>
     <% end %>
-  </div>
+  </div><br>
 
-  <div>
+  <div class="fw-bold">
     <%= form.label :ssn %><br>
-    <%= form.text_field :ssn %>
+    <%= form.text_field :ssn, class: "form-control", placeholder: "XXX-XX-XXXX" %>
     <% @person.errors.full_messages_for(:ssn).each do |message| %>
       <div><%= message %></div>
     <% end %>
-  </div>
+  </div><br>
 
-  <div>
+  <div class="fw-bold">
     <%= form.label :birth_date %><br>
-    <%= form.text_field :birth_date %>
+    <%= form.text_field :birth_date, class: "form-control", placeholder: "MM/DD/YYYY" %>
     <% @person.errors.full_messages_for(:birth_date).each do |message| %>
       <div><%= message %></div>
     <% end %>
-  </div>
+  </div><br>
 
-  <div>
+  <div class="fw-bold">
     <%= form.label :comment %><br>
-    <%= form.text_field :comment %>
+    <%= form.text_field :comment, class: "form-control", placeholder: "Comment..." %>
     <% @person.errors.full_messages_for(:comment).each do |message| %>
       <div><%= message %></div>
     <% end %>
-  </div>
+  </div><br>
 
-  <div>
-    <%= form.submit %>
-  </div>
 
-  <% if !@person.new_record? %>
-    <%= link_to "Delete", person_path(@person), data: { method: :delete, confirm: "Are you sure?" } %>
-  <% end %>
+  <span class="d-flex justify-content-between">
+    <%= form.submit class: "btn btn-success" %>
+
+    <% if !@person.new_record? %>
+    <%= link_to "Delete", person_path(@person), data: { method: :delete, confirm: "Are you sure?" }, class: "btn btn-danger " %>
+    <% end %>
+  </span>
 <% end %>
 

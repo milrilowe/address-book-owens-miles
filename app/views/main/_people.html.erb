@@ -1,0 +1,35 @@
+<div class="fixed-bottom d-flex justify-content-center mb-4">
+  <div id="circle" class="rounded-circle bg-warning ratio ratio-1x1">
+    <%= link_to new_person_path(format: :js), class: 'd-flex justify-content-center', remote: true do %>
+      <i id="plus" class="fa-solid fa-plus fa-2x " style="color: black;"></i>
+    <% end %>
+  </div>
+</div>
+
+
+<ol>
+  <% prevPerson = nil %>
+  <% sorted = @people.order(:last_name, :first_name, :middle_name) %>
+
+  <% index = 1 %>
+  <% sorted.each do |person| %>
+    <% if @people.length >= 8 %>
+      <% if prevPerson == nil || (prevPerson && prevPerson.last_name.chr.upcase != person.last_name.chr.upcase) %>
+        <% index = 1 %>
+        <hr>
+          <div class="d-flex justify-content-end">
+            <div class="pr-2">
+              <i class="pr-2 fa-solid fa-3x  fa-<%= person.last_name.chr.downcase %>"></i>
+            </div>
+          </div>
+        <hr>
+      <% end %>
+    <% end %>
+    <li>
+      <% index += 1 %>
+      <%= render person, index: index %>
+    </li>
+    <% prevPerson = person %>
+  <% end %>
+</ol>
+</div>

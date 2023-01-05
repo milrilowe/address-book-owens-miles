@@ -1,28 +1,29 @@
-<section class="details">
+<div id="person-details" class="bg-white px-5 py-3 rounded">
   <h1><%= @person.full_name %></h1>
-  <p>Birthday:
-    <% if @person.birth_date %>
-      <%= @person.birth_date %>
-    <% else %>
-      N/A
-    <% end %>
-  </p>
-  <p>SSN:
-    <% if @person.ssn && @person.ssn.strip.length > 0 %>
-      <%= @person.ssn %>
-    <% else %>
-      N/A
-    <% end %>
-  </p>
-  <p>Comment:
-    <% if @person.comment && @person.comment.strip.length > 0 %>
-      <%= @person.comment %>
-    <% else %>
-      N/A
-    <% end %>
-  </p>
-  <br/>
-  <div class="button-right">
-    <%= link_to 'Edit Info', edit_person_path(format: :js), remote: true, class:"btn btn-secondary" %>
+  <div style="margin-left:.125in;padding:.125in">
+    <p><b class="fw-bold">Birthday:</b>
+      <% if @person.birth_date %>
+        <%= @person.birth_date %>
+      <% else %>
+        N/A
+      <% end %>
+    </p>
+    <p><b class="fw-bold">SSN:</b>
+      <% if @person.ssn && @person.ssn.strip.length > 0 %>
+        <%= @person.ssn %>
+      <% else %>
+        N/A
+      <% end %>
+    </p>
+    <p><b class="fw-bold">Comment:</b>
+      <% if @person.comment && @person.comment.strip.length > 0 %>
+        <%= @person.comment %>
+      <% else %>
+        N/A
+      <% end %>
+    </p>
+    <div class="button-right">
+      <%= link_to 'Edit Info', edit_person_path(id: @person.id, format: :js), remote: true, class:"btn btn-warning fw-bold" %>
+    </div>
   </div>
-</section>
+<div id="person-details">

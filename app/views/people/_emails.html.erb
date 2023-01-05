@@ -1,51 +1,49 @@
-<section class="emails">
-  <div class="accordion-item">
+<div class="accordion-item">
+  <h2 class="accordion-header" id="flush-emails">
+    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseOne">
+      Emails
+    </button>
+  </h2>
 
-    <h2 class="accordion-header" id="flush-emails">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseOne">
-        Emails
-      </button>
-    </h2>
-
-    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-emails" data-bs-parent="#accordion">
-      <div class="accordion-body">
-        <section class="card-body" id="emails-section">
-          <% if @person.emails.length == 0  %>
-            <p>No emails</p>
-          <% elsif @person.emails.length == 1 %>
-              <%= render @emails %>
-          <% else %>
+  <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-emails" data-bs-parent="#accordion">
+    <div id="person-emails" class="accordion-body">
+      <section class="card-body" id="emails-section">
+        <% if @person.emails.length == 0  %>
+          <p><i>No emails...</i></p>
+        <% else %>
+          <% if @person.emails.length > 1 %>
             <div id="emailsCarousel" class="carousel slide" data-touch="true">
-              <div class="carousel-indicators">
+              <div id="email-carousel-indicators" class="carousel-indicators">
                 <% # Indicator on bottom of carousel %>
                 <% @person.emails.each_with_index do |email, index| %>
-                  <button type="button" data-bs-target="#emailsCarousel" data-bs-slide-to="<%= index %>" class="active" aria-current="true" aria-label="Slide <%= index + 1 %>"></button>
+                  <button id="email-indicator-<%= email.id %>" type="button" data-bs-target="#emailsCarousel" data-bs-slide-to="<%= index %>" class="<%= index == 0 ? 'active' : '' %>" aria-current="<%= index == 0 ? 'true' : '' %>" aria-label="Slide <%= index + 1 %>"></button>
                 <% end %>
               </div>
+          <% end %>
+            <div id="email-carousel-inner" class="carousel-inner" >
+              <% @person.emails.each_with_index do |email, index| %>
+                <div id="carousel-item-email-<%= email.id %>" class="carousel-item <%= index == 0 ? 'active' : '' %>">
+                  <%= render email %>
+                </div>
+              <% end %>
+            </div>
+            <% if @person.emails.length > 1 %>
               <button class="carousel-control-prev" type="button" data-bs-target="#emailsCarousel" data-bs-slide="prev" >
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
               </button>
-              <div class="carousel-inner" >
-                <% @person.emails.each_with_index do |email, index| %>
-                  <div class="carousel-item <%= index == 0 ? 'active' : '' %>">
-                    <%= render email %>
-                  </div>
-                <% end %>
-              </div>
               <button class="carousel-control-next" type="button" data-bs-target="#emailsCarousel" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
               </button>
             </div>
-          <% end %>
-          <div class="button-right">
-            <%= link_to "New Email", new_person_email_path(format: :js, person_id: @person.id), remote: true %>
-          </div>
-        </section>
-      </div>
+            <% end %>
+        <% end %>
+        <br/>
+        <div class="button-right">
+          <%= link_to "Add Email", new_person_email_path(format: :js, person_id: @person.id), class: 'btn btn-dark fw-bold', remote: true %>
+        </div>
+      </section>
     </div>
-
-
   </div>
-</section>
+</div>

@@ -1,49 +1,49 @@
-<section class="phone-numbers">
-  <div class="accordion-item">
+<div class="accordion-item">
+  <h2 class="accordion-header" id="flush-phone-numbers">
+    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+      Phone Numbers
+    </button>
+  </h2>
 
-    <h2 class="accordion-header" id="flush-addresses">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-        Phone Numbers
-      </button>
-    </h2>
-
-    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-addresses" data-bs-parent="#accordion">
-      <div class="accordion-body">
-        <section class="card-body" id="phone-numbers-section">
-          <% if @person.phone_numbers.length == 0  %>
-            <p>No phone numbers</p>
-          <% elsif @person.phone_numbers.length == 1 %>
-              <%= render @phone_numbers %>
-          <% else %>
-            <div id="phoneNumbersCarousel" class="carousel slide" data-touch="true">
-              <div class="carousel-indicators">
+  <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-phone-numbers" data-bs-parent="#accordion">
+    <div id="person-phone-numbers" class="accordion-body">
+      <section class="card-body" id="phone-numbers-section">
+        <% if @person.phone_numbers.length == 0  %>
+          <p><i>No phone numbers...</i></p>
+        <% else %>
+          <% if @person.phone_numbers.length > 1 %>
+          <div id="phoneNumbersCarousel" class="carousel slide" data-touch="true">
+              <div id="phone-number-carousel-indicators" class="carousel-indicators">
                 <% # Indicator on bottom of carousel %>
                 <% @person.phone_numbers.each_with_index do |phone_number, index| %>
-                  <button type="button" data-bs-target="#phoneNumbersCarousel" data-bs-slide-to="<%= index %>" class="active" aria-current="true" aria-label="Slide <%= index + 1 %>"></button>
+                  <button id="phone-number-indicator-<%= phone_number.id %>" type="button" data-bs-target="#phoneNumbersCarousel" data-bs-slide-to="<%= index %>" class="<%= index == 0 ? 'active' : '' %>" aria-current="<%= index == 0 ? 'true' : '' %>" aria-label="Slide <%= index + 1 %>"></button>
                 <% end %>
               </div>
+          <% end %>
+            <div id="phone-number-carousel-inner" class="carousel-inner" >
+              <% @person.phone_numbers.each_with_index do |phone_number, index| %>
+                <div id="carousel-item-phone-number-<%= phone_number.id %>" class="carousel-item <%= index == 0 ? 'active' : '' %>">
+                  <%= render phone_number %>
+                </div>
+              <% end %>
+            </div>
+            <% if @person.phone_numbers.length > 1 %>
               <button class="carousel-control-prev" type="button" data-bs-target="#phoneNumbersCarousel" data-bs-slide="prev" >
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
               </button>
-              <div class="carousel-inner" >
-                <% @person.phone_numbers.each_with_index do |phone_number, index| %>
-                  <div class="carousel-item <%= index == 0 ? 'active' : '' %>">
-                    <%= render phone_number %>
-                  </div>
-                <% end %>
-              </div>
               <button class="carousel-control-next" type="button" data-bs-target="#phoneNumbersCarousel" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
               </button>
             </div>
-          <% end %>
-          <div class="button-right">
-            <%= link_to "New Phone Number", new_person_phone_number_path(format: :js, person_id: @person.id), remote: true %>
-          </div>
-        </section>
-      </div>
+            <% end %>
+        <% end %>
+        <br/>
+        <div class="button-right">
+          <%= link_to "Add Phone Number", new_person_phone_number_path(format: :js, person_id: @person.id), class: 'btn btn-dark fw-bold', remote: true %>
+        </div>
+      </section>
     </div>
   </div>
-</section>
+</div>

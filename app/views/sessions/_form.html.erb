@@ -1,0 +1,13 @@
+<%= form_with url: sign_in_path do |form| %>
+  <div class="mb-3">
+    <%= form.text_field :email, class: "form-control", placeholder: "Email" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.password_field :password, class: "form-control", placeholder: "Password" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.submit "Sign In", class: "btn btn-warning fw-bold", id: "sign-in" %>
+  </div>
+<% end %>

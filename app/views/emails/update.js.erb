@@ -1,0 +1,15 @@
+$('#person-emails').empty();
+$('#person-emails').append('<%= j render 'people/emails' %>');
+
+$('#emailFormModal').modal('hide');
+$('#emailFormModal').remove();
+
+$('#flush-collapseTwo').addClass("collapse show");
+
+$("#email-carousel-inner").children('.active').removeClass('active');
+$('#carousel-item-email-<%= @email.id %>').addClass('active');
+
+$("#email-carousel-indicators").children().removeAttr('aria-current');
+$("#email-carousel-indicators").children().removeClass('active');
+
+$('#email-indicator-<%= @email.id %>').attr('aria-current', 'true').addClass('active');

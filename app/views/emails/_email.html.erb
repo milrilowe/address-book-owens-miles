@@ -1,11 +1,11 @@
-<div id="email-card" class="card carousel-card">
-  <div id="email-body" class="card-body carousel-card-body">
+<div id="email-card-<%= email.id %>" class="card carousel-card">
+  <div id="email-body-<%= email.id %>" class="card-body carousel-card-body">
     <div class="edit-email">
       <%= link_to "Edit", edit_person_email_path(format: :js, person_id: @person.id, id: email.id), remote: true %>
     </div>
-    <div id="email-entry" class="entry">
-      <p><%= email.email_address %></p>
-      <p>Comment:
+    <div id="email-entry-<%= email.id %>" class="entry">
+      <p><b class="fw-bold"><%= email.email_address %></b></p>
+      <p><b class="fw-bold">Comment:</b>
         <% if email.comment.strip.length > 0 %>
           <%= email.comment %>
         <% else %>

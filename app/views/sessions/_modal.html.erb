@@ -1,12 +1,12 @@
-<div class="modal fade" id="emailFormModal" tabindex="-1" aria-labelledby="emailFormModal" aria-hidden="true">
+<div class="modal fade" id="sessionFormModal" tabindex="-1" aria-labelledby="sessionFormModal" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="emailFormModal"><%= @email.id ? 'Edit Email' : 'New Email' %></h1>
+        <h1 class="modal-title fs-5" id="sessionFormModal">Login</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <%= render 'emails/form', person: @person, email: @person.emails.new %>
+        <%= render 'form' %>
       </div>
     </div>
   </div>

@@ -1,0 +1,14 @@
+
+<%= render 'shared/nav' %>
+<div class="wrapper">
+
+  <% if notice %>
+    <%= render 'shared/alerts' %>
+  <% end %>
+
+  <% if Current.user %>
+    <%= render "people" %>
+  <% else %>
+    <%= render "sign_up" %>
+  <% end %>
+</div>
