@@ -1,4 +1,6 @@
 class EmailsController < ApplicationController
+  before_action :authenticate
+
   before_action :set_email, only: [:show, :edit, :update, :destroy]
   before_action :set_person
 
@@ -28,6 +30,7 @@ class EmailsController < ApplicationController
       if @email.save
         format.html { redirect_to person_path(@person), notice: "Email was successfully created." }
         format.json { render :show, status: :created, location: @person }
+        format.js # render create.js.erb
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @email.errors, status: :unprocessable_entity }
@@ -42,12 +45,13 @@ class EmailsController < ApplicationController
   end
 
   def update
-    @email.update(email_params)
+    @emails = @person.emails
 
     respond_to do |format|
       if @email.update(email_params)
         format.html { redirect_to @person, notice: "Email was successfully updated." }
         format.json { render :show, status: :ok, location: @person }
+        format.js # render update.js.erb
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @email.errors, status: :unprocessable_entity }
@@ -56,10 +60,25 @@ class EmailsController < ApplicationController
   end
 
   def destroy
+    id = @email.id
     @email.destroy
+
+    prev_id = nil
+    @person.emails.each do |email|
+      break if email.id > id
+      prev_id = email.id
+    end
+
+    if prev_id != nil
+      @email = @person.emails.find(prev_id)
+    else
+      @email = @person.emails.first
+    end
+
     respond_to do |format|
       format.html { redirect_to @person, notice: "Email was successfully destroyed.", status: :see_other }
       format.json { head json: @email.errors }
+      format.js # render destroy.js.erb
     end
   end
 
