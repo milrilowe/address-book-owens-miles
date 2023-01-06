@@ -107,8 +107,7 @@ class PeopleController < ApplicationController
         parameters[:birth_date] = Date.parse(mmddyyyy[2] + mmddyyyy[0] + mmddyyyy[1])
         return parameters
       rescue ArgumentError
-        parameters[:birth_date] = ""
-        return parameters
+        parameters = nil
       end
     end
 end
