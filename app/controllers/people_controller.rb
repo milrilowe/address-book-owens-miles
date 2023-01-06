@@ -17,7 +17,7 @@ class PeopleController < ApplicationController
         format.html { redirect_to @person, notice: "Person was successfully created." }
         format.json { render :show, status: :created, location: @person }
       else
-        format.html { redirect_to 'main/index', status: :unprocessable_entity }
+        format.html { redirect_to root_path, status: :unprocessable_entity }
         format.json { render json: @person.errors, status: :unprocessable_entity }
       end
     end
