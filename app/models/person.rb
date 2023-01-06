@@ -49,5 +49,6 @@ class Person < ApplicationRecord
     self.birth_date = "" if self.birth_date.nil?
     self.ssn = "" if self.ssn.nil?
     self.comment = "" if self.comment.nil?
+    self.birth_date = "" if self.birth_date.nil?
   end
 end
