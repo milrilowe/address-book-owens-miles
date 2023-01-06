@@ -1,15 +1,28 @@
 require "test_helper"
 
 class PeopleControllerTest < ActionDispatch::IntegrationTest
-  test "should get index" do
-    get people_url
 
-    assert_select "h1", "People"
+  def setup
+    user = User.first
+
+    post sign_in_url, params: {
+      email: user.email,
+      password: "password"
+    }
+
+    follow_redirect!
+    assert_response :success
+  end
+
+  def teardown
+    delete logout_url
+
+    follow_redirect!
     assert_response :success
   end
 
   test "should get new" do
-    get new_person_url, xhr: true
+    get new_person_path, xhr: true
 
     assert_equal "text/javascript", @response.media_type
   end
@@ -19,6 +32,7 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
       salutation: "Mr.",
       first_name: "first",
       middle_name: "middle",
+      birth_date: "01/01/2000",
       last_name: "last",
       ssn: "123-45-6789",
       comment: "comment"
@@ -55,6 +69,7 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
       salutation: "Ms.",
       first_name: "update-first",
       middle_name: "update-middle",
+      birth_date: "01/01/2000",
       last_name: "update-last",
       ssn: "234-56-7890",
       comment: "update comment"
@@ -81,6 +96,6 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
       delete person_path(Person.first), xhr: true
     end
 
-    assert_redirected_to people_path
+    assert_redirected_to root_path
   end
 end

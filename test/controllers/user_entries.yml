@@ -1,5 +1,5 @@
-user_full_fields:
-  email_address: 'email_address'
+user:
+  email_address: 'address@email.com'
   password: 'password'
 
 user_missing_email_address:

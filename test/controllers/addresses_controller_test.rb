@@ -1,10 +1,23 @@
 require "test_helper"
 
 class AddressesControllerTest < ActionDispatch::IntegrationTest
-  test "should get person's addresses" do
-    get person_addresses_path(Person.first), xhr: true
 
-    assert_select "h1", "Addresses"
+  def setup
+    user = User.first
+
+    post sign_in_url, params: {
+      email: user.email,
+      password: "password"
+    }
+
+    follow_redirect!
+    assert_response :success
+  end
+
+  def teardown
+    delete logout_url
+
+    follow_redirect!
     assert_response :success
   end
 
@@ -35,7 +48,7 @@ class AddressesControllerTest < ActionDispatch::IntegrationTest
     assert_equal address[:zip_code], Address.last.zip_code
     assert_equal address[:country], Address.last.country
 
-    assert_redirected_to person_path(Person.first)
+    assert_equal "text/javascript", @response.media_type
   end
 
   test "should get edit" do
@@ -68,7 +81,7 @@ class AddressesControllerTest < ActionDispatch::IntegrationTest
     assert_equal updated_address[:zip_code], address.zip_code
     assert_equal updated_address[:country], address.country
 
-    assert_redirected_to person_path(person)
+    assert_equal "text/javascript", @response.media_type
   end
 
   test "should delete address" do
@@ -79,6 +92,6 @@ class AddressesControllerTest < ActionDispatch::IntegrationTest
       delete person_address_path(person, address), xhr: true
     end
 
-    assert_redirected_to person_path(person)
+    assert_equal "text/javascript", @response.media_type
   end
 end

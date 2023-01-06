@@ -6,6 +6,7 @@ person_full_fields:
   ssn: 'SSN'
   birth_date: 'Pete'
   comment: 'comment'
+  user: :user
 
 person_missing_first:
   salutation: 'Mr.'
