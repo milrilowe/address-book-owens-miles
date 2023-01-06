@@ -11,7 +11,6 @@ class AddressesController < ApplicationController
   def show
     respond_to do |format|
       format.html
-      format.json { render json: @address }
     end
   end
 
@@ -29,11 +28,9 @@ class AddressesController < ApplicationController
     respond_to do |format|
       if @address.save
         format.html { redirect_to person_path(@person), notice: "Address was successfully created." }
-        format.json { render :show, status: :created, location: @person }
         format.js # render create.js.erb
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @address.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -50,11 +47,9 @@ class AddressesController < ApplicationController
     respond_to do |format|
       if @address.update(address_params)
         format.html { redirect_to @person, notice: "Address was successfully updated." }
-        format.json { render :show, status: :ok, location: @person }
         format.js # render update.js.erb
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @address.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -77,7 +72,6 @@ class AddressesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to @person, notice: "Address was successfully destroyed.", status: :see_other }
-      format.json { head json: @address.errors }
       format.js # render destroy.js.erb
     end
   end

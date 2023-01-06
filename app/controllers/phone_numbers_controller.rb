@@ -9,7 +9,6 @@ class PhoneNumbersController < ApplicationController
   def show
     respond_to do |format|
       format.html
-      format.json { render json: @phone_number }
     end
   end
 
@@ -27,11 +26,9 @@ class PhoneNumbersController < ApplicationController
     respond_to do |format|
       if @phone_number.save
         format.html { redirect_to person_path(@person), notice: "Phone Number was successfully created." }
-        format.json { render :show, status: :created, location: @phone_number }
         format.js # render create.js.erb
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @phone_number.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -48,11 +45,9 @@ class PhoneNumbersController < ApplicationController
     respond_to do |format|
       if @phone_number.update(phone_number_params)
           format.html { redirect_to @person, notice: "Phone Number was successfully updated." }
-          format.json { render :show, status: :ok, location: @phone_number }
           format.js # render update.js.erb
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @phone_number.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -75,7 +70,6 @@ class PhoneNumbersController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to @person, notice: "Phone Number was successfully destroyed.", status: :see_other }
-      format.json { head json: @phone_number.errors }
       format.js # render destroy.js.erb
     end
   end

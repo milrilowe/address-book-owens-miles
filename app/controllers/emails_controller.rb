@@ -11,7 +11,6 @@ class EmailsController < ApplicationController
   def show
     respond_to do |format|
       format.html
-      format.json { render json: @email }
     end
   end
 
@@ -29,11 +28,9 @@ class EmailsController < ApplicationController
     respond_to do |format|
       if @email.save
         format.html { redirect_to person_path(@person), notice: "Email was successfully created." }
-        format.json { render :show, status: :created, location: @person }
         format.js # render create.js.erb
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @email.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -50,11 +47,9 @@ class EmailsController < ApplicationController
     respond_to do |format|
       if @email.update(email_params)
         format.html { redirect_to @person, notice: "Email was successfully updated." }
-        format.json { render :show, status: :ok, location: @person }
         format.js # render update.js.erb
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @email.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -77,7 +72,6 @@ class EmailsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to @person, notice: "Email was successfully destroyed.", status: :see_other }
-      format.json { head json: @email.errors }
       format.js # render destroy.js.erb
     end
   end
