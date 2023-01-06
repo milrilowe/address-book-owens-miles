@@ -17,7 +17,7 @@ class PeopleController < ApplicationController
         format.html { redirect_to @person, notice: "Person was successfully created." }
         format.json { render :show, status: :created, location: @person }
       else
-        format.html { render :new, status: :unprocessable_entity, notice: "<%= Current.user %>" }
+        format.html { redirect_to 'main/index', status: :unprocessable_entity }
         format.json { render json: @person.errors, status: :unprocessable_entity }
       end
     end
@@ -99,12 +99,16 @@ class PeopleController < ApplicationController
     def valid_params
       parameters = person_params.to_h
       date = parameters[:birth_date]
+      if date == ""
+        return parameters
+      end
       mmddyyyy = date.split("/")
       begin
         parameters[:birth_date] = Date.parse(mmddyyyy[2] + mmddyyyy[0] + mmddyyyy[1])
         return parameters
       rescue ArgumentError
-        redirect_to root_path, notice: "Invalid date format. Please use MM/DD/YYYY."
+        parameters[:birth_date] = ""
+        return parameters
       end
     end
 end
