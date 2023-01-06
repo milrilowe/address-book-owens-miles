@@ -12,5 +12,4 @@ class ApplicationController < ActionController::Base
   def authenticate
     redirect_to root_path, notice: "You must be logged in." unless Current.user
   end
-
 end
