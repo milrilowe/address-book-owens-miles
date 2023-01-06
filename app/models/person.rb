@@ -35,6 +35,8 @@ class Person < ApplicationRecord
     message: "must follow XXX-XX-XXXX format and be a valid SSN"
   }
 
+  validates :birth_date, presence: true
+
   def full_name
     "#{salutation} #{first_name} #{middle_name} #{last_name}"
   end
@@ -46,6 +48,7 @@ class Person < ApplicationRecord
   def set_default_fields
     self.salutation = "" if self.salutation.nil?
     self.middle_name = "" if self.middle_name.nil?
+    self.birth_date = "" if self.birth_date.nil?
     self.ssn = "" if self.ssn.nil?
     self.comment = "" if self.comment.nil?
   end
