@@ -4,8 +4,8 @@ class Address < ApplicationRecord
   validates :street, presence: true
   validates :street, length: { maximum: 30 }
 
-  validates :city, presence: true
-  validates :city, length: { maximum: 15 }
+  validates :town, presence: true
+  validates :town, length: { maximum: 15 }
 
-  validates :state, presence: true
+  validates :zip_code, presence: true
 end
