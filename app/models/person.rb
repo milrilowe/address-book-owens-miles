@@ -35,8 +35,6 @@ class Person < ApplicationRecord
     message: "must follow XXX-XX-XXXX format and be a valid SSN"
   }
 
-  validates :birth_date, presence: true
-
   def full_name
     "#{salutation} #{first_name} #{middle_name} #{last_name}"
   end
