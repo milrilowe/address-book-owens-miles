@@ -108,7 +108,8 @@ ol {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 5em
+  width: 5em;
+  pointer-events: auto;
 }
 
 #plus {
