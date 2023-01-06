@@ -33,6 +33,7 @@ body {
   overflow-y: scroll !important;
   padding: 0 !important;
   z-index: -1;
+  pointer-events: none;
 }
 
 li {
