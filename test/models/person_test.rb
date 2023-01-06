@@ -63,4 +63,23 @@ class PersonTest < ActiveSupport::TestCase
     person = Person.new(first_name: "John", last_name: "Doe", ssn: "000-00-0000", user: User.first)
     assert_not person.valid?
   end
+
+  test "valid if ssn is blank" do
+    person = Person.new(first_name: "John", last_name: "Doe", ssn: "", user: User.first)
+    assert person.valid?
+  end
+
+  test "valid if birth_date DD/MM/YYY format" do
+    person = Person.new(first_name: "John", last_name: "Doe", birth_date: "01/01/2000", user: User.first)
+    assert person.valid?
+  end
+
+  test "invalid if birth_date is not in DD/MM/YYYY format" do
+    person = Person.new(first_name: "John", last_name: "Doe", birth_date: "01012000", user: User.first)
+  end
+
+  test "valid if birth_date is blank" do
+    person = Person.new(first_name: "John", last_name: "Doe", birth_date: "", user: User.first)
+  end
+
 end

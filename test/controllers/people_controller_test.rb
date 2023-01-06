@@ -98,4 +98,22 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to root_path
   end
+
+  test "should not accept invalid birth_date" do
+    person = {
+      salutation: "Mr.",
+      first_name: "first",
+      middle_name: "middle",
+      birth_date: "02/32/2002",
+      last_name: "last",
+      ssn: "123-45-6789",
+      comment: "comment"
+    }
+
+    assert_no_difference("Person.count") do
+      post people_path, params: {
+        person: person
+      }, xhr: true
+    end
+  end
 end
