@@ -30,7 +30,7 @@ class PeopleController < ApplicationController
   end
 
   def edit
-    @person.birth_date = @person.birth_date.strftime("%m/%d/%Y")
+    @person.birth_date = @person.birth_date ? @person.birth_date.strftime("%m/%d/%Y") : nil
 
     respond_to do |format|
       format.js # render edit.js.erb
