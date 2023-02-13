@@ -27,7 +27,7 @@ To use Address Book, follow these steps:
 
 <div style="display:flex">
      <div style="flex:1;padding-right:10px;padding-left:20px">
-          <img src="https://github.com/milrilowe/address-book-owens-miles/tree/main/public/images/signup.png" width="350"/>
+          <img src="https://github.com/milrilowe/address-book-owens-miles/blob/main/public/images/signup.png" width="350"/>
      </div>
 </div>
 
@@ -35,7 +35,7 @@ To use Address Book, follow these steps:
 
 <div style="display:flex">
      <div style="flex:1;padding-right:10px;">
-          <img src="https://github.com/milrilowe/address-book-owens-miles/tree/main/public/images/home.png" width="350"/>
+          <img src="https://github.com/milrilowe/address-book-owens-miles/blob/main/public/images/home.png" width="350"/>
      </div>
 </div>
 
@@ -43,7 +43,7 @@ To use Address Book, follow these steps:
 
 <div style="display:flex">
      <div style="flex:1;padding-right:10px;">
-          <img src="https://github.com/milrilowe/address-book-owens-miles/tree/main/public/images/create.png" width="350"/>
+          <img src="https://github.com/milrilowe/address-book-owens-miles/blob/main/public/images/create.png" width="350"/>
      </div>
 </div>
 
@@ -51,8 +51,8 @@ To use Address Book, follow these steps:
 
 <div style="display:flex">
      <div style="flex:1;">
-          <img src="https://github.com/milrilowe/address-book-owens-miles/tree/main/public/images/person.png" width="350"/>
-          <img src="https://github.com/milrilowe/address-book-owens-miles/tree/main/public/images/address.png" width="350"/>
+          <img src="https://github.com/milrilowe/address-book-owens-miles/blob/main/public/images/person.png" width="350"/>
+          <img src="https://github.com/milrilowe/address-book-owens-miles/blob/main/public/images/address.png" width="350"/>
      </div>
 </div>
 
